@@ -1,0 +1,82 @@
+{
+  "Celiac Disease": {
+    "aliases": ["celiac","coeliac","maladie coeliaque","maladie cœliaque","حساسية القمح","داء بطني","داء الزلاقي"],
+    "avoid": ["wheat_gluten"],
+    "notes": "Avoid gluten (wheat/barley/rye). Many breads/wraps/breading contain gluten."
+  },
+  "Diabetes": {
+    "aliases": ["diabetes","diabete","diabète","داء السكري","سكري"],
+    "caution_keywords": ["sugar","syrup","honey","dessert","cake","cookies","soft drink","soda","cola","juice","sucre","sirop","dessert","gâteau","jus","حلو","سكر","عصير","مشروب غازي"],
+    "notes": "High sugar items may require caution."
+  },
+  "Hypertension": {
+    "aliases": ["hypertension","high blood pressure","pression arterielle","pression artérielle","ارتفاع ضغط الدم","ضغط"],
+    "caution_keywords": ["salt","salty","soy sauce","teriyaki","processed","smoked","pickles","sel","sale","sauce soja","fume","fumé","mariné","مملح","صلصة الصويا","مدخن","مخلل"],
+    "notes": "High sodium foods may require caution."
+  },
+  "Irritable Bowel Syndrome (IBS)": {
+    "aliases": ["ibs","irritable bowel syndrome","syndrome de l'intestin irritable","قولون عصبي"],
+    "caution_keywords": ["garlic","onion","beans","lentils","milk","cream","ail","oignon","haricots","lentilles","lait","creme","crème","ثوم","بصل","فاصوليا","عدس","حليب","كريمة"],
+    "caution_ingredients": ["garlic","onion","beans","lentils","milk","cream"],
+    "notes": "Common triggers include garlic/onion/beans and some dairy."
+  },
+  "Crohn's Disease": {
+    "aliases": ["crohn","crohn's","maladie de crohn","داء كرون"],
+    "caution_keywords": ["spicy","fried","fiber","nuts","seeds","coffee","caffeine"],
+    "caution_ingredients": ["nuts","coffee"],
+    "notes": "Spicy, fried, or high-fiber foods may worsen symptoms."
+  },
+  "Ulcerative Colitis": {
+    "aliases": ["ulcerative colitis","colite ulcereuse","colite ulcéreuse","التهاب القولون التقرحي"],
+    "caution_keywords": ["spicy","fried","fiber","nuts","seeds","coffee","caffeine"],
+    "caution_ingredients": ["nuts","coffee"],
+    "notes": "Spicy, fried, or high-fiber foods may worsen symptoms."
+  },
+  "Chronic Kidney Disease (CKD)": {
+    "aliases": ["ckd","kidney disease","renal disease","insuffisance renale","insuffisance rénale","maladie renale","مرض الكلى","فشل كلوي"],
+    "caution_keywords": ["banana","orange","tomato","potato","spinach","nuts","beans","lentils","dairy","cheese","milk","cola","soda"],
+    "caution_ingredients": ["banana","orange","tomato","potato","spinach","nuts","beans","lentils","milk","cheese","yogurt"],
+    "notes": "Kidney disease often requires limiting potassium/phosphorus and monitoring fluids."
+  },
+  "Gout": {
+    "aliases": ["gout","hyperuricemia","hyperuricemie","hyperuricémie","نقرس"],
+    "caution_keywords": ["red meat","beef","lamb","organ","liver","anchovy","sardine","shellfish","beer","yeast","fructose"],
+    "caution_ingredients": ["beef","lamb","liver","anchovy","sardine","shrimp","crab","beer"],
+    "notes": "High purine foods (red meat, organ meats, some seafood) may trigger gout."
+  },
+  "GERD": {
+    "aliases": ["gerd","acid reflux","reflux","reflux gastrique","reflux gastro-oesophagien","ارتجاع","حموضة"],
+    "caution_keywords": ["spicy","chili","chilli","tomato","citrus","lemon","lime","orange","pepper","chocolate","coffee","caffeine","mint"],
+    "caution_ingredients": ["tomato","lemon","lime","orange","chocolate","coffee","mint","pepper"],
+    "notes": "Acidic, spicy, or caffeinated foods may worsen reflux."
+  },
+  "Cardiovascular Disease": {
+    "aliases": ["heart disease","cardiovascular disease","coronary disease","maladie cardiovasculaire","مرض القلب","أمراض القلب"],
+    "caution_keywords": ["fried","butter","cream","cheese","processed","smoked","bacon","sausage"],
+    "caution_ingredients": ["butter","cream","cheese","bacon","sausage"],
+    "notes": "Limit saturated fats and heavily processed foods."
+  },
+  "High Cholesterol": {
+    "aliases": ["high cholesterol","hyperlipidemia","hyperlipidemie","hyperlipidémie","ارتفاع الكوليسترول"],
+    "caution_keywords": ["fried","butter","cream","cheese","processed","bacon","sausage","red meat"],
+    "caution_ingredients": ["butter","cream","cheese","beef","lamb","bacon","sausage"],
+    "notes": "Limit saturated fats and fatty meats."
+  },
+  "Fatty Liver (NAFLD)": {
+    "aliases": ["fatty liver","nafld","foie gras","foie gras maladie","تشحم الكبد","كبد دهني"],
+    "caution_keywords": ["sugar","syrup","dessert","fried","alcohol"],
+    "caution_ingredients": ["sugar","honey","alcohol"],
+    "notes": "Limit added sugar, fried foods, and alcohol."
+  },
+  "Pregnancy": {
+    "aliases": ["pregnancy","pregnant","grossesse","enceinte","حمل","حامل"],
+    "caution_keywords": ["raw","sushi","unpasteurized","soft cheese","mercury","tuna","alcohol"],
+    "caution_ingredients": ["sushi","tuna","soft cheese","unpasteurized milk","alcohol"],
+    "notes": "Avoid raw fish, unpasteurized dairy, alcohol, and high-mercury fish during pregnancy."
+  },
+  "Lactose Intolerance": {
+    "aliases": ["lactose intolerance","intolerance au lactose","intolérance au lactose","عدم تحمل اللاكتوز"],
+    "avoid_ingredients": ["milk","cheese","cream","yogurt","butter"],
+    "notes": "Avoid lactose-containing dairy unless lactose-free."
+  }
+}

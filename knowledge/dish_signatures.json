@@ -1,0 +1,138 @@
+{
+  "caesar": ["egg","fish","milk","wheat_gluten"],
+  "burger": {
+    "keywords": ["burger","hamburger","برغر","بورغر"],
+    "triggers": ["wheat_gluten","milk","egg","sesame"],
+    "note": "Burger buns often contain wheat and may include sesame."
+  },
+  "cheeseburger": ["wheat_gluten","milk","egg","sesame"],
+  "wrap": ["wheat_gluten"],
+  "sandwich": ["wheat_gluten"],
+  "shawarma": {
+    "keywords": ["shawarma","shwarma","شاورما"],
+    "triggers": ["wheat_gluten","milk"]
+  },
+  "kebab": {
+    "keywords": ["kebab","kabob","كباب"],
+    "triggers": ["wheat_gluten"]
+  },
+  "falafel": {
+    "keywords": ["falafel","فلافل"],
+    "triggers": ["sesame"]
+  },
+  "hummus": {
+    "keywords": ["hummus","houmous","hommos","حمص"],
+    "triggers": ["sesame"]
+  },
+  "manakish": ["wheat_gluten","sesame","milk"],
+  "pizza": {
+    "keywords": ["pizza","pizzas","بيتزا"],
+    "triggers": ["wheat_gluten","milk"],
+    "note": "Pizza often includes wheat crust and cheese."
+  },
+  "pasta": {
+    "keywords": ["pasta","pâtes","pates","مكرونة","سباغيتي"],
+    "triggers": ["wheat_gluten","egg"]
+  },
+  "lasagna": {
+    "keywords": ["lasagna","lasagne","لازانيا"],
+    "triggers": ["wheat_gluten","milk","egg"]
+  },
+  "ramen": {
+    "keywords": ["ramen","رامن"],
+    "triggers": ["wheat_gluten","egg","soy"]
+  },
+  "tempura": ["wheat_gluten","egg"],
+  "sushi": {
+    "keywords": ["sushi","سوشي"],
+    "triggers": ["fish","soy"]
+  },
+  "poke": {
+    "keywords": ["poke","بوكي"],
+    "triggers": ["fish","soy"]
+  },
+  "ceviche": {
+    "keywords": ["ceviche","سيفيتشي"],
+    "triggers": ["fish"]
+  },
+  "pad_thai": {
+    "keywords": ["pad thai","باد تاي"],
+    "triggers": ["peanut","egg","soy","fish"]
+  },
+  "satay": ["peanut","soy"],
+  "teriyaki": {
+    "keywords": ["teriyaki","ترياكي"],
+    "triggers": ["soy"]
+  },
+  "mayo": ["egg"],
+  "aioli": ["egg"],
+  "tahini": ["sesame"],
+  "biryani": {
+    "keywords": ["biryani","briani","برياني"],
+    "triggers": ["milk"]
+  },
+  "korma": {
+    "keywords": ["korma","كورما"],
+    "triggers": ["milk","tree_nuts"]
+  },
+  "butter_chicken": {
+    "keywords": ["butter chicken","murgh makhani","دجاج بالزبدة"],
+    "triggers": ["milk"]
+  },
+  "tikka_masala": {
+    "keywords": ["tikka masala","تيكا ماسالا"],
+    "triggers": ["milk"]
+  },
+  "thai_curry": {
+    "keywords": ["thai curry","green curry","red curry","كاري تايلندي"],
+    "triggers": ["peanut","soy"]
+  },
+  "pho": {
+    "keywords": ["pho","فُو"],
+    "triggers": ["soy"]
+  },
+  "bibimbap": {
+    "keywords": ["bibimbap","비빔밥","بيبيمباب"],
+    "triggers": ["egg","soy"]
+  },
+  "baklava": {
+    "keywords": ["baklava","بقلاوة"],
+    "triggers": ["wheat_gluten","tree_nuts","milk"]
+  },
+  "kunafa": {
+    "keywords": ["kunafa","knafeh","كنافة"],
+    "triggers": ["wheat_gluten","milk","tree_nuts"]
+  },
+  "omelette": {
+    "keywords": ["omelette","omelet","أومليت","اومليت"],
+    "triggers": ["egg","milk"]
+  },
+  "pancake": {
+    "keywords": ["pancake","pancakes","crêpe","crepe","كريب","بان كيك"],
+    "triggers": ["wheat_gluten","egg","milk"]
+  },
+  "waffle": {
+    "keywords": ["waffle","gaufre","وافل"],
+    "triggers": ["wheat_gluten","egg","milk"]
+  },
+  "quiche": {
+    "keywords": ["quiche","كيش"],
+    "triggers": ["wheat_gluten","egg","milk"]
+  },
+  "french_toast": {
+    "keywords": ["french toast","pain perdu","توست فرنسي"],
+    "triggers": ["wheat_gluten","egg","milk"]
+  },
+  "tacos": {
+    "keywords": ["taco","tacos","تاكو"],
+    "triggers": ["wheat_gluten"]
+  },
+  "quesadilla": {
+    "keywords": ["quesadilla","كيساديلا"],
+    "triggers": ["wheat_gluten","milk"]
+  },
+  "burrito": {
+    "keywords": ["burrito","بوريتو"],
+    "triggers": ["wheat_gluten","milk"]
+  }
+}

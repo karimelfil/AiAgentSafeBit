@@ -1,0 +1,8 @@
+{
+  "Salt": ["salt", "sea salt", "table salt", "sodium", "ملح", "sel"],
+  "Soy": ["soy", "soya", "soybean", "soy sauce", "tofu", "miso", "tempeh", "صويا", "soja"],
+  "Eggs": ["egg", "eggs", "egg white", "egg yolk", "mayonnaise", "aioli", "بيض", "œuf", "oeuf"],
+  "Fish": ["fish", "salmon", "tuna", "cod", "anchovy", "anchovies", "sardine", "seafood", "سمك", "poisson"],
+  "Wheat": ["wheat", "flour", "bread", "pasta", "semolina", "bulgur", "couscous", "gluten", "قمح", "blé"],
+  "Tomato": ["tomato", "tomatoes", "tomato sauce", "ketchup", "passata", "طماطم", "tomate"]
+}

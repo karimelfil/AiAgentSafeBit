@@ -1,0 +1,62 @@
+{
+  "milk": [
+    "milk","dairy","cream","butter","ghee","cheese","cheddar","mozzarella","parmesan","yogurt","whey","casein","lactose","ice cream","custard","bechamel","béchamel","creme fraiche","crème fraîche",
+    "lait","fromage","beurre","yaourt","creme","crème","lactose","glace","beurre clarifie",
+    "حليب","لبن","جبن","زبدة","قشطة","لبنة","كريمة","زبادي","سمن"
+  ],
+  "egg": [
+    "egg","eggs","mayo","mayonnaise","aioli","albumen","meringue","eggwash","omelette","omelet","quiche",
+    "oeuf","œuf","oeufs","mayonnaise",
+    "بيض","صفار","بياض","اومليت","أومليت"
+  ],
+  "wheat_gluten": [
+    "wheat","flour","gluten","bread","bun","wrap","pita","pasta","noodles","breading","breadcrumb","croutons","cake","cookies","pastry","pizza","barley","rye","semolina","couscous","bulgur","cracker",
+    "ble","blé","farine","pain","pate","pâte","pates","pâtes","semoule","biscuit","croissant",
+    "قمح","دقيق","خبز","مكرونة","شعير","جاودار","سميد","برغل","كسكس"
+  ],
+  "soy": [
+    "soy","soya","soy sauce","shoyu","tamari","miso","tofu","edamame","teriyaki","soybean","tempeh",
+    "soja","sauce soja","tofu",
+    "صويا","صلصة الصويا","فول الصويا","تمبيه"
+  ],
+  "peanut": [
+    "peanut","peanuts","groundnut","peanut butter","satay",
+    "arachide","arachides","cacahuete","cacahuète","beurre de cacahuete","beurre de cacahuète",
+    "فول سوداني","زبدة الفول السوداني"
+  ],
+  "tree_nuts": [
+    "almond","walnut","cashew","pistachio","hazelnut","pecan","macadamia","brazil nut","nutella","praline","pine nut",
+    "amande","noix","noisette","pistache","noix de cajou","noix de pécan","noix du brésil","pignon",
+    "لوز","جوز","بندق","كاجو","فستق","مكسرات","صنوبر"
+  ],
+  "sesame": [
+    "sesame","tahini","tahina","simsim","benne","sesame oil","sesame seeds",
+    "sésame","huile de sésame",
+    "طحينة","سمسم","زيت السمسم"
+  ],
+  "fish": [
+    "fish","anchovy","salmon","tuna","cod","tilapia","sardine","fish sauce","mackerel","trout","haddock",
+    "poisson","saumon","thon","morue","anchois","sardine",
+    "سمك","سلمون","تونة","صلصة السمك","سردين","انشوجة"
+  ],
+  "shellfish": [
+    "shrimp","prawn","crab","lobster","scampi","shellfish","crustacean",
+    "crevette","crevettes","crabe","homard","crustace",
+    "روبيان","جمبري","سرطان","كركند","قشريات"
+  ],
+  "molluscs": [
+    "mussels","oysters","clams","squid","octopus","calamari",
+    "moules","huitres","huîtres","palourdes","calamar","calamars","poulpe",
+    "محار","بلح البحر","حبار","أخطبوط"
+  ],
+  "mustard": [
+    "mustard","dijon","mustard seed","moutarde","graines de moutarde","خردل","بذور الخردل"
+  ],
+  "celery": ["celery","celeriac","céleri","celerì","كرفس"],
+  "sulfites": [
+    "sulfite","sulphite","wine","vinegar","dried fruit","preservative 220","preservative 221","sodium metabisulfite",
+    "sulfites","sulphites","vin","vinaigre","fruits secs","metabisulfite",
+    "كبريتيت","نبيذ","خل"
+  ],
+  "lupin": ["lupin","lupine","lupin flour","ترمس","دقيق الترمس"]
+}
