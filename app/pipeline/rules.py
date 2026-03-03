@@ -14,16 +14,12 @@ def evaluate(
     conflicts: List[Conflict] = []
     notes: List[str] = []
 
-    # normalize user allergies/diseases to comparable keys
     user_allergies = {a.strip().lower() for a in (profile.allergies or [])}
     user_diseases = {d.strip().lower() for d in (profile.diseases or [])}
     if profile.is_pregnant is True:
         user_diseases.add("pregnancy")
     ingredients_set = {i.strip().lower() for i in (ingredients_found or [])}
 
-    # Allergy match: if user allergy name matches a trigger key or overlaps keywords
-    # (In your DB you have Allergy names like "Eggs", "Fish", "Soy", "Salt"...)
-    # We'll map common names -> canonical trigger keys:
     allergy_to_trigger = {
         "eggs": "egg",
         "egg": "egg",
@@ -31,13 +27,12 @@ def evaluate(
         "dairy": "milk",
         "fish": "fish",
         "soy": "soy",
-        "salt": "sulfites",  # (not perfect) if you keep "Salt" allergy, treat it separately in your DB
+        "salt": "sulfites",
         "wheat": "wheat_gluten",
         "gluten": "wheat_gluten",
         "sesame": "sesame",
         "peanut": "peanut",
         "shellfish": "shellfish",
-        # French
         "lait": "milk",
         "fromage": "milk",
         "beurre": "milk",
@@ -59,7 +54,6 @@ def evaluate(
         "moutarde": "mustard",
         "celeri": "celery",
         "céleri": "celery",
-        # Arabic
         "حليب": "milk",
         "لبن": "milk",
         "جبن": "milk",
@@ -80,7 +74,7 @@ def evaluate(
     trigger_set = set(triggers)
 
     for ua in user_allergies:
-        mapped = allergy_to_trigger.get(ua, ua)  # fallback
+        mapped = allergy_to_trigger.get(ua, ua)
         if mapped in trigger_set:
             conflicts.append(Conflict(
                 type="allergy",
@@ -89,7 +83,6 @@ def evaluate(
                 explanation=f"Dish may contain {mapped}, which conflicts with user allergy '{ua}'."
             ))
 
-    # Diseases (aliases supported)
     disease_alias_map = {}
     for d_name, rule in disease_rules.items():
         aliases = [d_name] + (rule.get("aliases") or [])
@@ -116,7 +109,6 @@ def evaluate(
                     explanation=rule.get("notes", f"Conflict with disease rule for {canonical}.")
                 ))
 
-        # keyword cautions based on dish name or evidences
         ck = [k.lower() for k in rule.get("caution_keywords", [])]
         c_ing = set(i.lower() for i in rule.get("caution_ingredients", []))
         if ck:
@@ -126,7 +118,6 @@ def evaluate(
         if c_ing and (c_ing & ingredients_set):
             notes.append(f"Caution for {canonical}: {rule.get('notes','')}")
 
-    # Decide final safety (never UNKNOWN)
     if conflicts:
         return "RISKY", conflicts, notes, max(confidence, 0.8)
 
@@ -135,7 +126,6 @@ def evaluate(
         notes.append("Dish name is ambiguous; ingredients are unclear.")
         return "CAUTION", [], notes, confidence
 
-    # if no conflicts but low confidence or low coverage -> CAUTION (not unknown)
     if confidence < 0.5 or ingredient_coverage < 0.4:
         notes.append("Insufficient ingredient details detected. Consider asking the restaurant or checking ingredients.")
         return "CAUTION", [], notes, confidence

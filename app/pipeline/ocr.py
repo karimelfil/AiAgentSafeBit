@@ -5,7 +5,6 @@ import io
 import os
 from pdf2image import convert_from_bytes
 
-# ✅ Set these paths for your machine
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 POPLER_BIN = r"C:\Users\victus\Downloads\Release-25.12.0-0\poppler-25.12.0\Library\bin"
 

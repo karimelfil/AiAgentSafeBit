@@ -18,16 +18,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 KNOWLEDGE = ROOT / "knowledge"
 
-# ---- Load knowledge ONCE ----
 ALLERGENS = load_json(KNOWLEDGE / "allergens.json")
 COMMON_ING = load_json(KNOWLEDGE / "common_ingredients.json")
 DISH_SIG = load_json(KNOWLEDGE / "dish_signatures.json")
 DISEASE_RULES = load_json(KNOWLEDGE / "disease_rules.json")
 
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
 
 
 @app.post("/analyze-menu", response_model=AnalyzeMenuResponse)

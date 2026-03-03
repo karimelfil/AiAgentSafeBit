@@ -33,7 +33,6 @@
   "chicken": ["chicken","chicken breast","poulet","blanc de poulet","دجاج"],
   "beef": ["beef","boeuf","bœuf","لحم بقري"],
   "lamb": ["lamb","agneau","لحم غنم","خروف"],
-  "pork": ["pork","porc","لحم خنزير"],
   "fish": ["fish","salmon","tuna","cod","saumon","thon","سمك","سلمون","تونة"],
   "shrimp": ["shrimp","prawn","crevette","crevettes","جمبري","روبيان"],
   "egg": ["egg","eggs","oeuf","œuf","oeufs","بيض"],

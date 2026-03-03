@@ -45,29 +45,23 @@ def _looks_like_dish_title(line: str) -> bool:
 
     low = line.lower().strip()
 
-    # Never dish: bullet ingredient lines
     if BULLET_LINE.match(line):
         return False
 
-    # Never dish: pure price
     if ONLY_PRICE.match(low):
         return False
 
-    # Never dish: headers
     if _looks_like_header(line):
         return False
     if "detected_triggers" in low or "ingredients_found" in low:
         return False
 
-    # Dish: contains price somewhere
     if PRICE_ANY.search(line):
         return True
 
-    # Sentence-like lines are usually descriptions
     if (line.endswith(",") or line.endswith(".") or line.endswith("—") or line.endswith(":")) and len(line) > 15:
         return False
 
-    # Dish-ish: short, title-like (not too long) and not a comma-heavy ingredient list
     words = [w for w in low.split() if w]
     if 2 <= len(words) <= 7 and len(line) <= 50:
         if line.count(",") >= 2:
@@ -79,7 +73,6 @@ def _looks_like_dish_title(line: str) -> bool:
         if len(words) >= 6 and words[0] in DESC_STARTERS:
             return False
 
-        # must contain enough letters
         if sum(c.isalpha() for c in line) >= 6:
             return True
 
@@ -103,19 +96,16 @@ def segment_dishes(text: str) -> List[Dict[str, str]]:
     for ln in lines:
         if _looks_like_dish_title(ln):
             flush()
-            # remove trailing price chunk from dish name
             name = re.sub(r"\s*[\+\-–—]?\s*\d{1,3}([.,]\d{1,2})?\s*(\$|jd|jod|aed|sar|€|£)\b.*$",
                           "", ln, flags=re.IGNORECASE).strip()
             name = re.sub(r"\s*[°º]\s*$", "", name).strip()
             current_name = name if name else ln
         else:
-            # attach to current dish block (keep bullet lines as ingredients inside block)
             if current_name and not _looks_like_header(ln) and not ONLY_PRICE.match(ln):
                 block.append(ln)
 
     flush()
 
-    # de-dup dish names (keep first)
     seen = set()
     final = []
     for d in dishes:
