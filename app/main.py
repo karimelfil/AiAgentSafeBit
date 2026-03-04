@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 import json
 import uuid
+import re
 from pathlib import Path
 
 from app.schemas import UserProfile, AnalyzeMenuResponse, DishResult
@@ -23,6 +24,16 @@ COMMON_ING = load_json(KNOWLEDGE / "common_ingredients.json")
 DISH_SIG = load_json(KNOWLEDGE / "dish_signatures.json")
 DISEASE_RULES = load_json(KNOWLEDGE / "disease_rules.json")
 
+
+
+def _normalize_dish_name(name: str) -> str:
+    if not name:
+        return "Dish"
+    cleaned = name.strip()
+    cleaned = re.sub(r"^\s*dish\s*name\s*[:\-]\s*", "", cleaned, flags=re.IGNORECASE).strip()
+    cleaned = re.sub(r"\s*(dish\s*ingredients?|ingredients?)\s*[:\-].*$", "", cleaned, flags=re.IGNORECASE).strip()
+    cleaned = re.sub(r"\s+", " ", cleaned).strip(" -:\t\r\n")
+    return cleaned or "Dish"
 
 
 @app.post("/analyze-menu", response_model=AnalyzeMenuResponse)
@@ -50,7 +61,7 @@ async def analyze_menu(
     results = []
 
     for it in items:
-        dish_name = (it.get("dish_name") or "Dish").strip()
+        dish_name = _normalize_dish_name(it.get("dish_name") or "Dish")
         block = (it.get("block") or "").strip()
 
 
