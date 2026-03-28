@@ -133,7 +133,7 @@ def build_ingredients_list(
     block: str,
     common_ingredients: Dict[str, List[str]],
     allergen_triggers: Dict[str, List[str]],
-) -> Tuple[List[str], List[str], List[str], float, float, List[str]]:
+ ) -> Tuple[List[str], List[str], List[str], float, float, List[str]]:
 
     text = f"{dish_name}\n{block}"
 

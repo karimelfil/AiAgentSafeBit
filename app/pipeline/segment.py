@@ -93,7 +93,7 @@ def _clean(s: str) -> str:
 
 
 def _looks_like_header(line: str) -> bool:
-    l = line.lower().strip(":|-•>»")
+    l = line.lower().strip(":|-â€¢>Â»")
     if not l:
         return True
     if "menu" in l and len(l) <= 40:
@@ -113,7 +113,7 @@ def _looks_like_ingredient_line(line: str) -> bool:
     if line.rstrip().endswith(","):
         return True
 
-    if "," in line and any(token in low for token in [" and ", " with ", " et ", " avec ", " و "]):
+    if "," in line and any(token in low for token in [" and ", " with ", " et ", " avec ", " Ùˆ "]):
         return True
 
     words = re.findall(r"[A-Za-z']+", low)
@@ -155,7 +155,7 @@ def _looks_like_dish_title(line: str) -> bool:
 
     if line.endswith(","):
         return False
-    if (line.endswith(".") or line.endswith("—") or line.endswith(":")) and len(line) > 15:
+    if (line.endswith(".") or line.endswith("â€”") or line.endswith(":")) and len(line) > 15:
         return False
 
     words = [w for w in low.split() if w]

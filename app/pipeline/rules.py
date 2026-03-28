@@ -37,38 +37,38 @@ def evaluate(
         "fromage": "milk",
         "beurre": "milk",
         "oeuf": "egg",
-        "œuf": "egg",
+        "Å“uf": "egg",
         "oeufs": "egg",
         "poisson": "fish",
         "soja": "soy",
         "ble": "wheat_gluten",
-        "blé": "wheat_gluten",
+        "blÃ©": "wheat_gluten",
         "gluten": "wheat_gluten",
         "sesame": "sesame",
-        "sésame": "sesame",
+        "sÃ©same": "sesame",
         "arachide": "peanut",
         "cacahuete": "peanut",
-        "cacahuète": "peanut",
+        "cacahuÃ¨te": "peanut",
         "fruits a coque": "tree_nuts",
-        "fruits à coque": "tree_nuts",
+        "fruits Ã  coque": "tree_nuts",
         "moutarde": "mustard",
         "celeri": "celery",
-        "céleri": "celery",
-        "حليب": "milk",
-        "لبن": "milk",
-        "جبن": "milk",
-        "بيض": "egg",
-        "سمك": "fish",
-        "صويا": "soy",
-        "قمح": "wheat_gluten",
-        "غلوتين": "wheat_gluten",
-        "سمسم": "sesame",
-        "فول سوداني": "peanut",
-        "مكسرات": "tree_nuts",
-        "خردل": "mustard",
-        "كرفس": "celery",
-        "محار": "molluscs",
-        "قشريات": "shellfish"
+        "cÃ©leri": "celery",
+        "Ø­Ù„ÙŠØ¨": "milk",
+        "Ù„Ø¨Ù†": "milk",
+        "Ø¬Ø¨Ù†": "milk",
+        "Ø¨ÙŠØ¶": "egg",
+        "Ø³Ù…Ùƒ": "fish",
+        "ØµÙˆÙŠØ§": "soy",
+        "Ù‚Ù…Ø­": "wheat_gluten",
+        "ØºÙ„ÙˆØªÙŠÙ†": "wheat_gluten",
+        "Ø³Ù…Ø³Ù…": "sesame",
+        "ÙÙˆÙ„ Ø³ÙˆØ¯Ø§Ù†ÙŠ": "peanut",
+        "Ù…ÙƒØ³Ø±Ø§Øª": "tree_nuts",
+        "Ø®Ø±Ø¯Ù„": "mustard",
+        "ÙƒØ±ÙØ³": "celery",
+        "Ù…Ø­Ø§Ø±": "molluscs",
+        "Ù‚Ø´Ø±ÙŠØ§Øª": "shellfish"
     }
 
     trigger_set = set(triggers)
@@ -121,7 +121,7 @@ def evaluate(
     if conflicts:
         return "RISKY", conflicts, notes, max(confidence, 0.8)
 
-    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour", "يوميات", "طبق اليوم"}
+    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour", "ÙŠÙˆÙ…ÙŠØ§Øª", "Ø·Ø¨Ù‚ Ø§Ù„ÙŠÙˆÙ…"}
     if dish_name.strip().lower() in ambiguous:
         notes.append("Dish name is ambiguous; ingredients are unclear.")
         return "CAUTION", [], notes, confidence
