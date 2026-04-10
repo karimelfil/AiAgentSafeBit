@@ -84,10 +84,17 @@ MEDICAL_PROFILE_TERMS = {
     "fish",
 }
 
+OCR_LINE_REPLACEMENTS = [
+    (re.compile(r"^\s*dis[h]?\b[\s:.-]*", re.IGNORECASE), "Dish: "),
+    (re.compile(r"^\s*ingredien\w*\b[\s:.-]*", re.IGNORECASE), "Ingredients: "),
+]
+
 
 def _clean(s: str) -> str:
     s = s.strip()
     s = LEADING_QUOTE.sub("", s)
+    for pattern, replacement in OCR_LINE_REPLACEMENTS:
+        s = pattern.sub(replacement, s)
     s = re.sub(r"\s+", " ", s)
     return s
 
@@ -105,6 +112,9 @@ def _looks_like_ingredient_line(line: str) -> bool:
     low = line.lower().strip().strip(":")
     if not low:
         return False
+
+    if low.startswith("ingredients") or low.startswith("ingredient"):
+        return True
 
     if any(low.startswith(marker) for marker in INGREDIENT_MARKERS):
         return True
@@ -151,6 +161,9 @@ def _looks_like_dish_title(line: str) -> bool:
         return False
 
     if PRICE_ANY.search(line):
+        return True
+
+    if re.match(r"^\s*dish\s*[:\-]\s*.+", line, flags=re.IGNORECASE):
         return True
 
     if line.endswith(","):
@@ -219,6 +232,7 @@ def segment_dishes(text: str) -> List[Dict[str, str]]:
                 flags=re.IGNORECASE,
             ).strip()
             name = re.sub(r"^\s*dish\s*name\s*[:\-]\s*", "", name, flags=re.IGNORECASE).strip()
+            name = re.sub(r"^\s*dish\s*[:\-]\s*", "", name, flags=re.IGNORECASE).strip()
             name = re.sub(r"\s*[\u00b0\u00ba]\s*$", "", name).strip()
             current_name = name if name else ln
         else:
@@ -228,7 +242,7 @@ def segment_dishes(text: str) -> List[Dict[str, str]]:
                 and not ONLY_PRICE.match(ln)
                 and not _looks_like_profile_line(ln)
             ):
-                block.append(ln)
+                block.append(re.sub(r"^\s*ingredients\s*[:\-]\s*", "", ln, flags=re.IGNORECASE))
 
     flush()
 

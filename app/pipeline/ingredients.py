@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from difflib import SequenceMatcher
 from typing import Dict, List, Tuple
 
 NEG_WINDOW = 35
@@ -45,7 +46,51 @@ def _is_negated(full_text: str, alias: str) -> bool:
 
     return False
 
-def extract_lexicon_hits(text: str, lexicon: Dict[str, List[str]]) -> Tuple[List[str], List[str]]:
+def _tokenize_words(text: str) -> List[str]:
+    return re.findall(r"[a-z]+", _norm(text))
+
+def _phrase_present_with_ocr_tolerance(full_text: str, alias: str, allow_fuzzy: bool = True) -> bool:
+    normalized_alias = _norm(alias)
+    if not normalized_alias:
+        return False
+
+    if re.search(rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", _norm(full_text)):
+        return True
+
+    if not allow_fuzzy:
+        return False
+
+    alias_words = [word for word in normalized_alias.split() if word]
+    text_words = _tokenize_words(full_text)
+    if not alias_words or not text_words or len(text_words) < len(alias_words):
+        return False
+
+    window_size = len(alias_words)
+    alias_joined = " ".join(alias_words)
+    best_ratio = 0.0
+    for idx in range(len(text_words) - window_size + 1):
+        candidate = " ".join(text_words[idx : idx + window_size])
+        ratio = SequenceMatcher(None, alias_joined, candidate).ratio()
+        if ratio > best_ratio:
+            best_ratio = ratio
+        if ratio >= 0.84:
+            return True
+
+    if len(alias_words) == 1:
+        for token in text_words:
+            ratio = SequenceMatcher(None, alias_words[0], token).ratio()
+            if ratio > best_ratio:
+                best_ratio = ratio
+            if ratio >= 0.82:
+                return True
+
+    return False
+
+def extract_lexicon_hits(
+    text: str,
+    lexicon: Dict[str, List[str]],
+    allow_fuzzy: bool = True,
+) -> Tuple[List[str], List[str]]:
 
     low = _norm(text)
     found = []
@@ -56,7 +101,7 @@ def extract_lexicon_hits(text: str, lexicon: Dict[str, List[str]]) -> Tuple[List
             a2 = _norm(a)
             if not a2:
                 continue
-            if re.search(rf"(?<!\w){re.escape(a2)}(?!\w)", low):
+            if _phrase_present_with_ocr_tolerance(low, a2, allow_fuzzy=allow_fuzzy):
                 if _is_negated(text, a2):
                     continue
                 found.append(canon)
@@ -137,8 +182,8 @@ def build_ingredients_list(
 
     text = f"{dish_name}\n{block}"
 
-    ingredients_found, ing_evidence = extract_lexicon_hits(text, common_ingredients)
-    triggers_found, trig_evidence = extract_lexicon_hits(text, allergen_triggers)
+    ingredients_found, ing_evidence = extract_lexicon_hits(text, common_ingredients, allow_fuzzy=True)
+    triggers_found, trig_evidence = extract_lexicon_hits(text, allergen_triggers, allow_fuzzy=False)
 
     inferred, infer_notes, boost = infer_from_dish_name(dish_name)
     triggers_found = sorted(set(triggers_found) | set(inferred))
