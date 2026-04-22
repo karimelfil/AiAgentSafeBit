@@ -3,17 +3,20 @@ import unicodedata
 from difflib import SequenceMatcher
 from typing import Dict, List, Tuple
 
-NEG_WINDOW = 35
+NEG_WINDOW = 35 #check negation within after and before the ingredient mention
 
+#remove harakat and tenwyin from Arabic text to improve matching
 _ARABIC_DIACRITICS = re.compile(
     r"[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED\u0640]"
 )
 
+#transform accented characters to their base form
 def _strip_accents(s: str) -> str:
     return "".join(
         c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c)
     )
 
+#normalize text by stripping accents, removing Arabic diacritics, lowercasing, and collapsing whitespace
 def _norm(s: str) -> str:
     if not s:
         return ""
@@ -23,6 +26,7 @@ def _norm(s: str) -> str:
     s = re.sub(r"\s+", " ", s.strip())
     return s
 
+#check if an allergen or ingredinet mention is negated in the text
 def _is_negated(full_text: str, alias: str) -> bool:
     t = _norm(full_text)
     a = _norm(alias)
@@ -46,13 +50,16 @@ def _is_negated(full_text: str, alias: str) -> bool:
 
     return False
 
+#extract lowercase words from text ignoring punctuation split words into tokens ["",""]
 def _tokenize_words(text: str) -> List[str]:
     return re.findall(r"[a-z]+", _norm(text))
 
+#search for word or phrase with ocr error and compare similarity with SequenceMatcher, allow fuzzy matching for short phrases and single words to account for OCR errors, but require exact match for longer phrases to avoid false positives
 def _phrase_present_with_ocr_tolerance(full_text: str, alias: str, allow_fuzzy: bool = True) -> bool:
     normalized_alias = _norm(alias)
     if not normalized_alias:
         return False
+
 
     if re.search(rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", _norm(full_text)):
         return True
@@ -86,6 +93,8 @@ def _phrase_present_with_ocr_tolerance(full_text: str, alias: str, allow_fuzzy: 
 
     return False
 
+
+#excract allergen or ingredient mentions from text using a lexicon of canonical names and their aliases
 def extract_lexicon_hits(
     text: str,
     lexicon: Dict[str, List[str]],
@@ -108,6 +117,7 @@ def extract_lexicon_hits(
                 evidence.append(f"text:{a2}")
                 break
 
+#avoid duplicates 
     seen = set()
     out = []
     for x in found:
@@ -115,6 +125,7 @@ def extract_lexicon_hits(
             seen.add(x)
             out.append(x)
     return out, evidence
+
 
 def infer_from_dish_name(dish_name: str) -> Tuple[List[str], List[str], float]:
 
@@ -161,6 +172,7 @@ def infer_from_dish_name(dish_name: str) -> Tuple[List[str], List[str], float]:
     inferred = sorted(set(inferred))
     return inferred, notes, boost
 
+#count number of ingredients slots to estimate coverage, look for commas and connectors
 def _estimate_slots(text: str) -> int:
     low = _norm(text)
     if not low:
@@ -173,6 +185,8 @@ def _estimate_slots(text: str) -> int:
     slots = min(8, max(1, sep + 1))
     return slots
 
+
+#summarize which ingredients and allergens are found in the text
 def build_ingredients_list(
     dish_name: str,
     block: str,
@@ -188,6 +202,7 @@ def build_ingredients_list(
     inferred, infer_notes, boost = infer_from_dish_name(dish_name)
     triggers_found = sorted(set(triggers_found) | set(inferred))
 
+#6 evidence for each
     evidences = []
     evidences.extend(trig_evidence[:6])
     evidences.extend(ing_evidence[:6])

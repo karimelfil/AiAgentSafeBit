@@ -256,11 +256,11 @@ def find_dish_by_name(scan_history, dish_name: Optional[str]) -> Optional[Assess
 
 
 def _status_from_safety(safety_level: str) -> ChatStatus:
-    if safety_level == "SAFE":
+    if safety_level == "safe":
         return "safe"
-    if safety_level == "RISKY":
+    if safety_level == "unsafe":
         return "not_safe"
-    if safety_level == "CAUTION":
+    if safety_level == "risky":
         return "caution"
     return "unknown"
 
