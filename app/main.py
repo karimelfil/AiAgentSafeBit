@@ -114,7 +114,7 @@ async def analyze_menu(
         )
         needs_confirm = eval_conf < 0.5 or ingredient_coverage < 0.35
         if needs_confirm:
-            eval_notes.append("Low extraction confidence. Ask the user to retake the photo or confirm ingredients.")
+            eval_notes.append("The ingredient details are limited, so please confirm them with the restaurant or upload a clearer photo for a more reliable result.")
 
         results.append(DishResult(
             dish_name=dish_name,

@@ -1,7 +1,30 @@
 from typing import Dict, List, Tuple, Optional
 from app.schemas import UserProfile, Conflict
 
-# Evaluates the safety of a dish for a user based on detected triggers, user profile, and disease rules.    
+
+def _display_term(value: str) -> str:
+    cleaned = str(value or "").replace("_", " ").strip()
+    if not cleaned:
+        return ""
+    return " ".join(
+        part.capitalize() if part.lower() not in {"and", "or", "of"} else part.lower()
+        for part in cleaned.split()
+    )
+
+
+def _condition_label(value: str) -> str:
+    low = str(value or "").strip().lower()
+    labels = {
+        "high cholesterol": "high cholesterol",
+        "hypertension": "high blood pressure",
+        "pregnancy": "pregnancy",
+        "cardiovascular disease": "heart health needs",
+        "lactose intolerance": "lactose intolerance",
+    }
+    return labels.get(low, str(value or "").strip() or "your health profile")
+
+
+# Evaluates the safety of a dish for a user based on detected triggers, user profile, and disease rules.
 def evaluate(
     dish_name: str,
     triggers: List[str],
@@ -46,36 +69,36 @@ def evaluate(
         "fromage": "milk",
         "beurre": "milk",
         "oeuf": "egg",
-        "Ã…â€œuf": "egg",
+        "Ãƒâ€¦Ã¢â‚¬Å“uf": "egg",
         "oeufs": "egg",
         "poisson": "fish",
         "soja": "soy",
         "ble": "wheat_gluten",
-        "blÃƒÂ©": "wheat_gluten",
-        "sÃƒÂ©same": "sesame",
+        "blÃƒÆ’Ã‚Â©": "wheat_gluten",
+        "sÃƒÆ’Ã‚Â©same": "sesame",
         "arachide": "peanut",
         "cacahuete": "peanut",
-        "cacahuÃƒÂ¨te": "peanut",
+        "cacahuÃƒÆ’Ã‚Â¨te": "peanut",
         "fruits a coque": "tree_nuts",
-        "fruits ÃƒÂ  coque": "tree_nuts",
+        "fruits ÃƒÆ’Ã‚Â  coque": "tree_nuts",
         "moutarde": "mustard",
         "celeri": "celery",
-        "cÃƒÂ©leri": "celery",
-        "Ã˜Â­Ã™â€žÃ™Å Ã˜Â¨": "milk",
-        "Ã™â€žÃ˜Â¨Ã™â€ ": "milk",
-        "Ã˜Â¬Ã˜Â¨Ã™â€ ": "milk",
-        "Ã˜Â¨Ã™Å Ã˜Â¶": "egg",
-        "Ã˜Â³Ã™â€¦Ã™Æ’": "fish",
-        "Ã˜ÂµÃ™Ë†Ã™Å Ã˜Â§": "soy",
-        "Ã™â€šÃ™â€¦Ã˜Â­": "wheat_gluten",
-        "Ã˜ÂºÃ™â€žÃ™Ë†Ã˜ÂªÃ™Å Ã™â€ ": "wheat_gluten",
-        "Ã˜Â³Ã™â€¦Ã˜Â³Ã™â€¦": "sesame",
-        "Ã™ÂÃ™Ë†Ã™â€ž Ã˜Â³Ã™Ë†Ã˜Â¯Ã˜Â§Ã™â€ Ã™Å ": "peanut",
-        "Ã™â€¦Ã™Æ’Ã˜Â³Ã˜Â±Ã˜Â§Ã˜Âª": "tree_nuts",
-        "Ã˜Â®Ã˜Â±Ã˜Â¯Ã™â€ž": "mustard",
-        "Ã™Æ’Ã˜Â±Ã™ÂÃ˜Â³": "celery",
-        "Ã™â€¦Ã˜Â­Ã˜Â§Ã˜Â±": "molluscs",
-        "Ã™â€šÃ˜Â´Ã˜Â±Ã™Å Ã˜Â§Ã˜Âª": "shellfish"
+        "cÃƒÆ’Ã‚Â©leri": "celery",
+        "ÃƒËœÃ‚Â­Ãƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â¨": "milk",
+        "Ãƒâ„¢Ã¢â‚¬Å¾ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Â ": "milk",
+        "ÃƒËœÃ‚Â¬ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Â ": "milk",
+        "ÃƒËœÃ‚Â¨Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â¶": "egg",
+        "ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã†â€™": "fish",
+        "ÃƒËœÃ‚ÂµÃƒâ„¢Ã‹â€ Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§": "soy",
+        "Ãƒâ„¢Ã¢â‚¬Å¡Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â­": "wheat_gluten",
+        "ÃƒËœÃ‚ÂºÃƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã‹â€ ÃƒËœÃ‚ÂªÃƒâ„¢Ã…Â Ãƒâ„¢Ã¢â‚¬Â ": "wheat_gluten",
+        "ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦": "sesame",
+        "Ãƒâ„¢Ã‚ÂÃƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Å¾ ÃƒËœÃ‚Â³Ãƒâ„¢Ã‹â€ ÃƒËœÃ‚Â¯ÃƒËœÃ‚Â§Ãƒâ„¢Ã¢â‚¬Â Ãƒâ„¢Ã…Â ": "peanut",
+        "Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã†â€™ÃƒËœÃ‚Â³ÃƒËœÃ‚Â±ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª": "tree_nuts",
+        "ÃƒËœÃ‚Â®ÃƒËœÃ‚Â±ÃƒËœÃ‚Â¯Ãƒâ„¢Ã¢â‚¬Å¾": "mustard",
+        "Ãƒâ„¢Ã†â€™ÃƒËœÃ‚Â±Ãƒâ„¢Ã‚ÂÃƒËœÃ‚Â³": "celery",
+        "Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â­ÃƒËœÃ‚Â§ÃƒËœÃ‚Â±": "molluscs",
+        "Ãƒâ„¢Ã¢â‚¬Å¡ÃƒËœÃ‚Â´ÃƒËœÃ‚Â±Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª": "shellfish"
     }
 
     allergy_ingredient_hints = {
@@ -101,11 +124,13 @@ def evaluate(
         ingredient_hints = allergy_ingredient_hints.get(ua, set()) | allergy_ingredient_hints.get(mapped, set())
         # Check if the mapped trigger is in the detected triggers for the dish
         if mapped in trigger_set or bool(ingredient_hints & ingredients_set) or ua in dish_name_low:
+            allergy_label = _display_term(ua)
+            trigger_label = _display_term(mapped)
             conflicts.append(Conflict(
                 type="allergy",
                 trigger=mapped,
                 evidence="; ".join(evidences[:3]) if evidences else "detected",
-                explanation=f"Dish may contain {mapped}, which conflicts with user allergy '{ua}'."
+                explanation=f"This dish may contain {trigger_label}, which does not match your {allergy_label} allergy."
             ))
 
     disease_alias_map = {}
@@ -144,20 +169,20 @@ def evaluate(
         if ck:
             combined_text = (dish_name + " " + " ".join(evidences)).lower()
             if any(k in combined_text for k in ck):
-                notes.append(f"Caution for {canonical}: {rule.get('notes','')}")
+                notes.append(f"For your {_condition_label(canonical)}, this dish may need caution. {rule.get('notes','')}")
         if c_ing and (c_ing & ingredients_set):
-            notes.append(f"Caution for {canonical}: {rule.get('notes','')}")
+            notes.append(f"For your {_condition_label(canonical)}, this dish may need caution. {rule.get('notes','')}")
 
     if conflicts:
         return "unsafe", conflicts, notes, max(confidence, 0.8)
 
-    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour", "Ã™Å Ã™Ë†Ã™â€¦Ã™Å Ã˜Â§Ã˜Âª", "Ã˜Â·Ã˜Â¨Ã™â€š Ã˜Â§Ã™â€žÃ™Å Ã™Ë†Ã™â€¦"}
+    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour", "Ãƒâ„¢Ã…Â Ãƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª", "ÃƒËœÃ‚Â·ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Å¡ ÃƒËœÃ‚Â§Ãƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã…Â Ãƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Â¦"}
     if dish_name.strip().lower() in ambiguous:
-        notes.append("Dish name is ambiguous; ingredients are unclear.")
+        notes.append("The dish name is too general to identify the ingredients with confidence.")
         return "risky", [], notes, confidence
 
     if confidence < 0.5 or ingredient_coverage < 0.4:
-        notes.append("Insufficient ingredient details detected. Consider asking the restaurant or checking ingredients.")
+        notes.append("There is not enough ingredient detail to give a fully confident recommendation. Please confirm the ingredients with the restaurant.")
         return "risky", [], notes, confidence
 
     if notes:

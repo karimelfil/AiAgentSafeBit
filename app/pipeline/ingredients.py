@@ -136,37 +136,37 @@ def infer_from_dish_name(dish_name: str) -> Tuple[List[str], List[str], float]:
 
     if any(x in n for x in ["wrap", "sandwich", "burger", "bun", "bread", "toast", "pita", "tortilla"]):
         inferred.append("wheat_gluten")
-        notes.append("Dish type often includes bread/wrap -> possible gluten.")
+        notes.append("This type of dish often includes bread or a wrap, so it may contain gluten.")
         boost = max(boost, 0.20)
 
     if "pasta" in n and "gluten-free" not in n:
         inferred.append("wheat_gluten")
-        notes.append("Pasta is commonly wheat-based unless labeled gluten-free.")
+        notes.append("Pasta is usually made with wheat unless it is clearly labeled gluten-free.")
         boost = max(boost, 0.20)
 
     if any(x in n for x in ["cheese", "creamy", "alfredo", "butter"]):
         inferred.append("milk")
-        notes.append("Dish name suggests dairy.")
+        notes.append("The dish name suggests it may contain dairy.")
         boost = max(boost, 0.15)
 
     if any(x in n for x in ["mayo", "aioli"]):
         inferred.append("egg")
-        notes.append("Sauces like mayo/aioli often contain egg.")
+        notes.append("Sauces such as mayo or aioli often contain egg.")
         boost = max(boost, 0.12)
 
     if "gluten-free" in n:
         inferred = [t for t in inferred if t != "wheat_gluten"]
-        notes.append("Dish labeled gluten-free.")
+        notes.append("The dish is labeled gluten-free.")
         boost = max(boost, 0.12)
 
     if "dairy-free" in n:
         inferred = [t for t in inferred if t != "milk"]
-        notes.append("Dish labeled dairy-free.")
+        notes.append("The dish is labeled dairy-free.")
         boost = max(boost, 0.12)
 
     if "no eggs" in n or "egg-free" in n:
         inferred = [t for t in inferred if t != "egg"]
-        notes.append("Dish labeled no-egg.")
+        notes.append("The dish is labeled egg-free.")
         boost = max(boost, 0.12)
 
     inferred = sorted(set(inferred))
