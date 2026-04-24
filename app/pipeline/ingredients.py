@@ -5,16 +5,71 @@ from typing import Dict, List, Tuple
 
 NEG_WINDOW = 35 #check negation within after and before the ingredient mention
 
+DAIRY_FREE_PHRASES = [
+    "no dairy",
+    "dairy-free",
+    "dairy free",
+    "milk-free",
+    "milk free",
+    "lactose-free",
+    "lactose free",
+    "sans lactose",
+    "sans lait",
+    "بدون حليب",
+    "خالي من الحليب",
+    "خالٍ من الحليب",
+    "خالي من الألبان",
+    "خالٍ من الألبان",
+]
+
+GLUTEN_FREE_PHRASES = [
+    "gluten-free",
+    "gluten free",
+    "sans gluten",
+    "بدون غلوتين",
+    "خالي من الغلوتين",
+    "خالٍ من الغلوتين",
+]
+
+EGG_FREE_PHRASES = [
+    "no eggs",
+    "egg-free",
+    "egg free",
+    "eggless",
+    "without eggs",
+    "sans oeuf",
+    "sans œuf",
+    "بدون بيض",
+    "خالي من البيض",
+    "خالٍ من البيض",
+]
+
+GENERIC_NEGATIONS = (
+    "no",
+    "without",
+    "free of",
+    "free from",
+    "contains no",
+    "made without",
+    "does not contain",
+    "avoid",
+    "omit",
+    "hold the",
+    "sans",
+)
+
 #remove harakat and tenwyin from Arabic text to improve matching
 _ARABIC_DIACRITICS = re.compile(
     r"[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED\u0640]"
 )
+
 
 #transform accented characters to their base form
 def _strip_accents(s: str) -> str:
     return "".join(
         c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c)
     )
+
 
 #normalize text by stripping accents, removing Arabic diacritics, lowercasing, and collapsing whitespace
 def _norm(s: str) -> str:
@@ -26,6 +81,12 @@ def _norm(s: str) -> str:
     s = re.sub(r"\s+", " ", s.strip())
     return s
 
+
+#check if any of the phrases are present in the text after normalization
+def _contains_any_phrase(text: str, phrases: List[str]) -> bool:
+    return any(_norm(phrase) in text for phrase in phrases)
+
+
 #check if an allergen or ingredinet mention is negated in the text
 def _is_negated(full_text: str, alias: str) -> bool:
     t = _norm(full_text)
@@ -36,60 +97,85 @@ def _is_negated(full_text: str, alias: str) -> bool:
 
     window = t[max(0, idx - NEG_WINDOW): min(len(t), idx + len(a) + NEG_WINDOW)]
 
-    if re.search(rf"\b(no|without|free of|avoid|sans)\b.{0,15}\b{re.escape(a)}\b", window):
+    generic_pattern = "|".join(re.escape(token) for token in GENERIC_NEGATIONS)
+    if re.search(rf"\b(?:{generic_pattern})\b.{{0,20}}\b{re.escape(a)}\b", window):
         return True
-    if re.search(rf"(?:بدون|خالي من|خالٍ من).{{0,15}}{re.escape(a)}", window):
+    if re.search(rf"(?:بدون|من دون|لا يحتوي على|خالي من|خالٍ من).{{0,20}}{re.escape(a)}", window):
         return True
     if re.search(rf"\b{re.escape(a)}\b\s*-\s*free\b", window):
         return True
 
-    if any(x in window for x in ["dairy-free", "sans lactose", "sans lait", "خالي من الحليب", "خالٍ من الحليب", "خالي من الألبان", "خالٍ من الألبان"]) and a in {"milk", "dairy", "cheese", "cream", "butter"}:
+    if _contains_any_phrase(window, DAIRY_FREE_PHRASES) and a in {
+        "milk",
+        "dairy",
+        "cheese",
+        "cream",
+        "butter",
+        "yogurt",
+        "ghee",
+    }:
         return True
-    if any(x in window for x in ["gluten-free", "sans gluten", "خالي من الغلوتين", "خالٍ من الغلوتين"]) and a in {"gluten", "wheat", "flour", "bread", "pasta", "barley", "rye"}:
+    if _contains_any_phrase(window, GLUTEN_FREE_PHRASES) and a in {
+        "gluten",
+        "wheat",
+        "flour",
+        "bread",
+        "pasta",
+        "barley",
+        "rye",
+        "spelt",
+        "kamut",
+    }:
+        return True
+    if _contains_any_phrase(window, EGG_FREE_PHRASES) and a in {
+        "egg",
+        "eggs",
+        "egg white",
+        "egg yolk",
+        "mayo",
+        "mayonnaise",
+        "aioli",
+    }:
         return True
 
     return False
 
+
 #extract lowercase words from text ignoring punctuation split words into tokens ["",""]
 def _tokenize_words(text: str) -> List[str]:
-    return re.findall(r"[a-z]+", _norm(text))
+    return re.findall(r"[^\W\d_]+", _norm(text), flags=re.UNICODE)
+
 
 #search for word or phrase with ocr error and compare similarity with SequenceMatcher, allow fuzzy matching for short phrases and single words to account for OCR errors, but require exact match for longer phrases to avoid false positives
 def _phrase_present_with_ocr_tolerance(full_text: str, alias: str, allow_fuzzy: bool = True) -> bool:
+    normalized_text = _norm(full_text)
     normalized_alias = _norm(alias)
     if not normalized_alias:
         return False
 
-
-    if re.search(rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", _norm(full_text)):
+    if re.search(rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", normalized_text, flags=re.UNICODE):
         return True
 
     if not allow_fuzzy:
         return False
 
     alias_words = [word for word in normalized_alias.split() if word]
-    text_words = _tokenize_words(full_text)
+    text_words = _tokenize_words(normalized_text)
     if not alias_words or not text_words or len(text_words) < len(alias_words):
         return False
 
-    window_size = len(alias_words)
     alias_joined = " ".join(alias_words)
-    best_ratio = 0.0
+    if len(alias_words) == 1 and len(alias_joined) <= 4:
+        return False
+
+    window_size = len(alias_words)
+    phrase_threshold = 0.88 if window_size > 1 else 0.86
+
     for idx in range(len(text_words) - window_size + 1):
         candidate = " ".join(text_words[idx : idx + window_size])
         ratio = SequenceMatcher(None, alias_joined, candidate).ratio()
-        if ratio > best_ratio:
-            best_ratio = ratio
-        if ratio >= 0.84:
+        if ratio >= phrase_threshold:
             return True
-
-    if len(alias_words) == 1:
-        for token in text_words:
-            ratio = SequenceMatcher(None, alias_words[0], token).ratio()
-            if ratio > best_ratio:
-                best_ratio = ratio
-            if ratio >= 0.82:
-                return True
 
     return False
 
@@ -106,15 +192,20 @@ def extract_lexicon_hits(
     evidence = []
 
     for canon, aliases in lexicon.items():
-        for a in aliases:
-            a2 = _norm(a)
-            if not a2:
-                continue
-            if _phrase_present_with_ocr_tolerance(low, a2, allow_fuzzy=allow_fuzzy):
-                if _is_negated(text, a2):
+        normalized_aliases = []
+        for alias in aliases:
+            alias_norm = _norm(alias)
+            if alias_norm:
+                normalized_aliases.append(alias_norm)
+
+        # Prefer longer and more specific aliases first to reduce collisions like
+        # "peanut butter" being matched only as "butter".
+        for alias_norm in sorted(set(normalized_aliases), key=len, reverse=True):
+            if _phrase_present_with_ocr_tolerance(low, alias_norm, allow_fuzzy=allow_fuzzy):
+                if _is_negated(text, alias_norm):
                     continue
                 found.append(canon)
-                evidence.append(f"text:{a2}")
+                evidence.append(f"text:{alias_norm}")
                 break
 
 #avoid duplicates 
@@ -139,7 +230,7 @@ def infer_from_dish_name(dish_name: str) -> Tuple[List[str], List[str], float]:
         notes.append("This type of dish often includes bread or a wrap, so it may contain gluten.")
         boost = max(boost, 0.20)
 
-    if "pasta" in n and "gluten-free" not in n:
+    if "pasta" in n and not _contains_any_phrase(n, GLUTEN_FREE_PHRASES):
         inferred.append("wheat_gluten")
         notes.append("Pasta is usually made with wheat unless it is clearly labeled gluten-free.")
         boost = max(boost, 0.20)
@@ -154,23 +245,24 @@ def infer_from_dish_name(dish_name: str) -> Tuple[List[str], List[str], float]:
         notes.append("Sauces such as mayo or aioli often contain egg.")
         boost = max(boost, 0.12)
 
-    if "gluten-free" in n:
+    if _contains_any_phrase(n, GLUTEN_FREE_PHRASES):
         inferred = [t for t in inferred if t != "wheat_gluten"]
         notes.append("The dish is labeled gluten-free.")
         boost = max(boost, 0.12)
 
-    if "dairy-free" in n:
+    if _contains_any_phrase(n, DAIRY_FREE_PHRASES):
         inferred = [t for t in inferred if t != "milk"]
         notes.append("The dish is labeled dairy-free.")
         boost = max(boost, 0.12)
 
-    if "no eggs" in n or "egg-free" in n:
+    if _contains_any_phrase(n, EGG_FREE_PHRASES):
         inferred = [t for t in inferred if t != "egg"]
         notes.append("The dish is labeled egg-free.")
         boost = max(boost, 0.12)
 
     inferred = sorted(set(inferred))
     return inferred, notes, boost
+
 
 #count number of ingredients slots to estimate coverage, look for commas and connectors
 def _estimate_slots(text: str) -> int:
@@ -222,12 +314,12 @@ def build_ingredients_list(
     ingredient_coverage = min(1.0, len(ingredients_found) / max(1, slots))
 
     low = _norm(text)
-    if "no eggs" in low or "egg-free" in low or "sans oeuf" in low or "sans œuf" in low or "بدون بيض" in low:
+    if _contains_any_phrase(low, EGG_FREE_PHRASES):
         triggers_found = [t for t in triggers_found if t != "egg"]
-    if "no dairy" in low or "dairy-free" in low or "sans lait" in low or "sans lactose" in low or "بدون حليب" in low or "خالي من الحليب" in low or "خالٍ من الحليب" in low:
+    if _contains_any_phrase(low, DAIRY_FREE_PHRASES):
         triggers_found = [t for t in triggers_found if t != "milk"]
-    if "gluten-free" in low or "sans gluten" in low or "خالي من الغلوتين" in low or "خالٍ من الغلوتين" in low:
-        if not any(x in low for x in ["wheat", "bread", "flour", "barley", "rye"]):
+    if _contains_any_phrase(low, GLUTEN_FREE_PHRASES):
+        if not any(x in low for x in ["wheat", "bread", "flour", "barley", "rye", "spelt", "kamut"]):
             triggers_found = [t for t in triggers_found if t != "wheat_gluten"]
 
     notes = []

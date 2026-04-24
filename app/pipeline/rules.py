@@ -69,36 +69,36 @@ def evaluate(
         "fromage": "milk",
         "beurre": "milk",
         "oeuf": "egg",
-        "Ãƒâ€¦Ã¢â‚¬Å“uf": "egg",
+        "œuf": "egg",
         "oeufs": "egg",
         "poisson": "fish",
         "soja": "soy",
         "ble": "wheat_gluten",
-        "blÃƒÆ’Ã‚Â©": "wheat_gluten",
-        "sÃƒÆ’Ã‚Â©same": "sesame",
+        "blé": "wheat_gluten",
+        "sésame": "sesame",
         "arachide": "peanut",
         "cacahuete": "peanut",
-        "cacahuÃƒÆ’Ã‚Â¨te": "peanut",
+        "cacahuète": "peanut",
         "fruits a coque": "tree_nuts",
-        "fruits ÃƒÆ’Ã‚Â  coque": "tree_nuts",
+        "fruits à coque": "tree_nuts",
         "moutarde": "mustard",
         "celeri": "celery",
-        "cÃƒÆ’Ã‚Â©leri": "celery",
-        "ÃƒËœÃ‚Â­Ãƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â¨": "milk",
-        "Ãƒâ„¢Ã¢â‚¬Å¾ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Â ": "milk",
-        "ÃƒËœÃ‚Â¬ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Â ": "milk",
-        "ÃƒËœÃ‚Â¨Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â¶": "egg",
-        "ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã†â€™": "fish",
-        "ÃƒËœÃ‚ÂµÃƒâ„¢Ã‹â€ Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§": "soy",
-        "Ãƒâ„¢Ã¢â‚¬Å¡Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â­": "wheat_gluten",
-        "ÃƒËœÃ‚ÂºÃƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã‹â€ ÃƒËœÃ‚ÂªÃƒâ„¢Ã…Â Ãƒâ„¢Ã¢â‚¬Â ": "wheat_gluten",
-        "ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â³Ãƒâ„¢Ã¢â‚¬Â¦": "sesame",
-        "Ãƒâ„¢Ã‚ÂÃƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Å¾ ÃƒËœÃ‚Â³Ãƒâ„¢Ã‹â€ ÃƒËœÃ‚Â¯ÃƒËœÃ‚Â§Ãƒâ„¢Ã¢â‚¬Â Ãƒâ„¢Ã…Â ": "peanut",
-        "Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã†â€™ÃƒËœÃ‚Â³ÃƒËœÃ‚Â±ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª": "tree_nuts",
-        "ÃƒËœÃ‚Â®ÃƒËœÃ‚Â±ÃƒËœÃ‚Â¯Ãƒâ„¢Ã¢â‚¬Å¾": "mustard",
-        "Ãƒâ„¢Ã†â€™ÃƒËœÃ‚Â±Ãƒâ„¢Ã‚ÂÃƒËœÃ‚Â³": "celery",
-        "Ãƒâ„¢Ã¢â‚¬Â¦ÃƒËœÃ‚Â­ÃƒËœÃ‚Â§ÃƒËœÃ‚Â±": "molluscs",
-        "Ãƒâ„¢Ã¢â‚¬Å¡ÃƒËœÃ‚Â´ÃƒËœÃ‚Â±Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª": "shellfish"
+        "céléri": "celery",
+        "حليب": "milk",
+        "لبن": "milk",
+        "جبن": "milk",
+        "بيض": "egg",
+        "سمك": "fish",
+        "صويا": "soy",
+        "قمح": "wheat_gluten",
+        "غلوتين": "wheat_gluten",
+        "سمسم": "sesame",
+        "فول سوداني": "peanut",
+        "مكسرات": "tree_nuts",
+        "خردل": "mustard",
+        "كرفس": "celery",
+        "محار": "molluscs",
+        "قشريات": "shellfish",
     }
 
     allergy_ingredient_hints = {
@@ -176,7 +176,7 @@ def evaluate(
     if conflicts:
         return "unsafe", conflicts, notes, max(confidence, 0.8)
 
-    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour", "Ãƒâ„¢Ã…Â Ãƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Â¦Ãƒâ„¢Ã…Â ÃƒËœÃ‚Â§ÃƒËœÃ‚Âª", "ÃƒËœÃ‚Â·ÃƒËœÃ‚Â¨Ãƒâ„¢Ã¢â‚¬Å¡ ÃƒËœÃ‚Â§Ãƒâ„¢Ã¢â‚¬Å¾Ãƒâ„¢Ã…Â Ãƒâ„¢Ã‹â€ Ãƒâ„¢Ã¢â‚¬Â¦"}
+    ambiguous = {"chef special", "chef's special", "special", "mixed", "assorted", "sauce", "surprise", "plat du jour"}
     if dish_name.strip().lower() in ambiguous:
         notes.append("The dish name is too general to identify the ingredients with confidence.")
         return "risky", [], notes, confidence

@@ -1,4 +1,4 @@
-import re 
+import re
 from typing import Dict, List
 
 #regex to remove price from dish titles
@@ -23,7 +23,13 @@ COMMON_HEADERS = {
     "menu",
     "dine-in menu",
     "dine in menu",
+    "breakfast",
+    "lunch",
+    "dinner",
+    "brunch",
     "starters",
+    "appetizers",
+    "soups",
     "sides",
     "side",
     "mains",
@@ -36,6 +42,8 @@ COMMON_HEADERS = {
     "salads",
     "sandwiches",
     "burgers",
+    "combos",
+    "platters",
     "extras",
     "trays",
     "allergen tags",
@@ -51,6 +59,8 @@ INGREDIENT_MARKERS = {
     "dish ingredients",
     "contains",
     "composition",
+    "served with",
+    "made with",
 }
 
 #verbs that indicate that this is a description and not a dish title
@@ -65,11 +75,11 @@ DESC_VERBS = {
     "seasoned",
     "simmered",
     "garnished",
-
-
+    "includes",
+    "contains",
 }
 #starters that indicate that this is a description and not a dish title
-DESC_STARTERS = {"with", "over", "finished", "topped", "drizzled", "brushed", "served"}
+DESC_STARTERS = {"with", "over", "finished", "topped", "drizzled", "brushed", "served", "includes", "contains"}
 
 #terms that indicate that this is a medical profile line and not a dish title
 MEDICAL_PROFILE_TERMS = {
@@ -101,6 +111,7 @@ OCR_LINE_REPLACEMENTS = [
     (re.compile(r"^\s*ingredien\w*\b[\s:.-]*", re.IGNORECASE), "Ingredients: "),
 ]
 
+
 #clean and normalize text before applying the process
 def _clean(s: str) -> str:
     s = s.strip()
@@ -110,14 +121,16 @@ def _clean(s: str) -> str:
     s = re.sub(r"\s+", " ", s)
     return s
 
+
 #filters to detect headers
 def _looks_like_header(line: str) -> bool:
-    l = line.lower().strip(":|-â€¢>Â»")
+    l = line.lower().strip(":|-•>»")
     if not l:
         return True #
     if "menu" in l and len(l) <= 40:
         return True
     return l in COMMON_HEADERS or (line.isupper() and len(l) <= 35)
+
 
 #filters to detect ingredient lines
 def _looks_like_ingredient_line(line: str) -> bool:
@@ -131,25 +144,25 @@ def _looks_like_ingredient_line(line: str) -> bool:
     if any(low.startswith(marker) for marker in INGREDIENT_MARKERS):
         return True
 
-
     if line.rstrip().endswith(","):
         return True
 
-    if "," in line and any(token in low for token in [" and ", " with ", " et ", " avec ", " Ùˆ "]):
+    if "," in line and any(token in low for token in [" and ", " with ", " et ", " avec ", " و ", " مع "]):
         return True
 
-    words = re.findall(r"[A-Za-z']+", low) #extract words from the line
+    words = re.findall(r"[^\W\d_]+", low, flags=re.UNICODE) #extract words from the line
     if words and all(w in MEDICAL_PROFILE_TERMS for w in words):
         return True
 
     return False
+
 
 #filters to detect medical profile lines
 def _looks_like_profile_line(line: str) -> bool:
     low = line.lower().strip()
     if low.startswith("selected allergies") or low.startswith("selected diseases"):
         return True
-    words = re.findall(r"[A-Za-z']+", low) #extract words from the line
+    words = re.findall(r"[^\W\d_]+", low, flags=re.UNICODE) #extract words from the line
     return len(words) >= 2 and all(w in MEDICAL_PROFILE_TERMS for w in words)
 
 
@@ -170,8 +183,7 @@ def _looks_like_dish_title(line: str) -> bool:
         return False
     if _looks_like_ingredient_line(line):
         return False
-    
-    
+
     if "detected_triggers" in low or "ingredients_found" in low:
         return False
 
@@ -183,11 +195,11 @@ def _looks_like_dish_title(line: str) -> bool:
 
     if line.endswith(","):
         return False
-    if (line.endswith(".") or line.endswith("â€”") or line.endswith(":")) and len(line) > 15:
+    if (line.endswith(".") or line.endswith("—") or line.endswith(":")) and len(line) > 15:
         return False
 
     words = [w for w in low.split() if w]
-    if 2 <= len(words) <= 7 and len(line) <= 50:
+    if 2 <= len(words) <= 8 and len(line) <= 60:
         if line.count(",") >= 2:
             return False
 
@@ -201,6 +213,7 @@ def _looks_like_dish_title(line: str) -> bool:
             return True
 
     return False
+
 
 #detect and parse dishes that are labeled with dish Name and ingredients labels
 def _parse_labeled_dishes(text: str) -> List[Dict[str, str]]:
@@ -219,7 +232,6 @@ def _parse_labeled_dishes(text: str) -> List[Dict[str, str]]:
 #take raw ocr and return structured dishes with their names and ingredients blocks
 def segment_dishes(text: str) -> List[Dict[str, str]]:
 
-    
     labeled = _parse_labeled_dishes(text)
     if labeled:
         return labeled

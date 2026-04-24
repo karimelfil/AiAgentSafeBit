@@ -26,7 +26,7 @@ DISH_SIG = load_json(KNOWLEDGE / "dish_signatures.json")
 DISEASE_RULES = load_json(KNOWLEDGE / "disease_rules.json")
 
 
-
+# This function cleans and normalizes dish names by removing common prefixes, suffixes, and extraneous information.
 def _normalize_dish_name(name: str) -> str:
     if not name:
         return "Dish"
@@ -37,7 +37,7 @@ def _normalize_dish_name(name: str) -> str:
     cleaned = re.sub(r"\s+", " ", cleaned).strip(" -:\t\r\n")
     return cleaned or "Dish"
 
-
+# Endpoint to analyze an uploaded menu image and extract dish information, ingredients, and potential allergen triggers based on the user's profile.
 @app.post("/analyze-menu", response_model=AnalyzeMenuResponse)
 async def analyze_menu(
     file: UploadFile = File(...),
@@ -45,6 +45,7 @@ async def analyze_menu(
 ):
 
     menu_upload_id = str(uuid.uuid4())
+
 
 
     try:
@@ -74,14 +75,17 @@ async def analyze_menu(
             allergen_triggers=ALLERGENS
         )
 
+        #combine dish name and block into one lowercase string
         text_blob = f"{dish_name} {block}".lower()
 
+    #check for dish signatures and add triggers and notes accordingly
         for sig_name, rule in (DISH_SIG or {}).items():
 
             keywords = []
             triggers_to_add = []
             note = None
 
+            
             if isinstance(rule, dict):
                 keywords = rule.get("keywords", [])
                 triggers_to_add = rule.get("triggers", [])
@@ -94,6 +98,7 @@ async def analyze_menu(
             else:
                 continue
 
+            #if any of the keywords are found in the text blob, add the corresponding triggers and notes
             if any(str(k).lower() in text_blob for k in keywords):
                 for t in triggers_to_add:
                     if t not in triggers:
@@ -112,6 +117,7 @@ async def analyze_menu(
             ingredients_found=ingredients,
             ingredient_coverage=ingredient_coverage
         )
+        #confirmation needed if confidence is low or ingredient coverage is low
         needs_confirm = eval_conf < 0.5 or ingredient_coverage < 0.35
         if needs_confirm:
             eval_notes.append("The ingredient details are limited, so please confirm them with the restaurant or upload a clearer photo for a more reliable result.")

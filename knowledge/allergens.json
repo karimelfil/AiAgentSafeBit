@@ -1,62 +1,809 @@
 {
   "milk": [
-    "milk","dairy","cream","butter","ghee","cheese","cheddar","mozzarella","parmesan","yogurt","whey","casein","lactose","ice cream","custard","bechamel","béchamel","creme fraiche","crème fraîche",
-    "lait","fromage","beurre","yaourt","creme","crème","lactose","glace","beurre clarifie",
-    "حليب","لبن","جبن","زبدة","قشطة","لبنة","كريمة","زبادي","سمن"
+    "milk",
+    "dairy",
+    "cream",
+    "butter",
+    "ghee",
+    "cheese",
+    "cheddar",
+    "mozzarella",
+    "parmesan",
+    "yogurt",
+    "whey",
+    "casein",
+    "lactose",
+    "ice cream",
+    "custard",
+    "bechamel",
+    "béchamel",
+    "creme fraiche",
+    "crème fraîche",
+    "lait",
+    "fromage",
+    "beurre",
+    "yaourt",
+    "creme",
+    "crème",
+    "lactose",
+    "glace",
+    "beurre clarifie",
+    "حليب",
+    "لبن",
+    "جبن",
+    "زبدة",
+    "قشطة",
+    "لبنة",
+    "كريمة",
+    "زبادي",
+    "سمن",
+    "labneh",
+    "labneh dip",
+    "ricotta",
+    "feta",
+    "halloumi",
+    "burrata",
+    "cream cheese",
+    "sour cream",
+    "b?chamel",
+    "cr?me fra?che"
   ],
   "egg": [
-    "egg","eggs","mayo","mayonnaise","aioli","albumen","meringue","eggwash","omelette","omelet","quiche",
-    "oeuf","œuf","oeufs","mayonnaise",
-    "بيض","صفار","بياض","اومليت","أومليت"
+    "egg",
+    "eggs",
+    "mayo",
+    "mayonnaise",
+    "aioli",
+    "albumen",
+    "meringue",
+    "eggwash",
+    "omelette",
+    "omelet",
+    "quiche",
+    "oeuf",
+    "œuf",
+    "oeufs",
+    "mayonnaise",
+    "بيض",
+    "صفار",
+    "بياض",
+    "اومليت",
+    "أومليت",
+    "egg white",
+    "egg yolk",
+    "caesar dressing"
   ],
   "wheat_gluten": [
-    "wheat","flour","gluten","bread","bun","wrap","pita","pasta","noodles","breading","breadcrumb","croutons","cake","cookies","pastry","pizza","barley","rye","semolina","couscous","bulgur","cracker",
-    "ble","blé","farine","pain","pate","pâte","pates","pâtes","semoule","biscuit","croissant",
-    "قمح","دقيق","خبز","مكرونة","شعير","جاودار","سميد","برغل","كسكس"
+    "wheat",
+    "flour",
+    "gluten",
+    "bread",
+    "bun",
+    "wrap",
+    "pita",
+    "pasta",
+    "noodles",
+    "breading",
+    "breadcrumb",
+    "croutons",
+    "cake",
+    "cookies",
+    "pastry",
+    "pizza",
+    "barley",
+    "rye",
+    "semolina",
+    "couscous",
+    "bulgur",
+    "cracker",
+    "ble",
+    "blé",
+    "farine",
+    "pain",
+    "pate",
+    "pâte",
+    "pates",
+    "pâtes",
+    "semoule",
+    "biscuit",
+    "croissant",
+    "قمح",
+    "دقيق",
+    "خبز",
+    "مكرونة",
+    "شعير",
+    "جاودار",
+    "سميد",
+    "برغل",
+    "كسكس",
+    "breadcrumbs",
+    "bread crumbs",
+    "orzo",
+    "lasagne sheets",
+    "lasagna sheets",
+    "udon",
+    "seitan"
   ],
   "soy": [
-    "soy","soya","soy sauce","shoyu","tamari","miso","tofu","edamame","teriyaki","soybean","tempeh",
-    "soja","sauce soja","tofu",
-    "صويا","صلصة الصويا","فول الصويا","تمبيه"
+    "soy",
+    "soya",
+    "soy sauce",
+    "shoyu",
+    "tamari",
+    "miso",
+    "tofu",
+    "edamame",
+    "teriyaki",
+    "soybean",
+    "tempeh",
+    "soja",
+    "sauce soja",
+    "tofu",
+    "صويا",
+    "صلصة الصويا",
+    "فول الصويا",
+    "تمبيه",
+    "soy glaze",
+    "ponzu"
   ],
   "peanut": [
-    "peanut","peanuts","groundnut","peanut butter","satay",
-    "arachide","arachides","cacahuete","cacahuète","beurre de cacahuete","beurre de cacahuète",
-    "فول سوداني","زبدة الفول السوداني"
+    "peanut",
+    "peanuts",
+    "groundnut",
+    "peanut butter",
+    "satay",
+    "arachide",
+    "arachides",
+    "cacahuete",
+    "cacahuète",
+    "beurre de cacahuete",
+    "beurre de cacahuète",
+    "فول سوداني",
+    "زبدة الفول السوداني",
+    "peanut sauce"
   ],
   "tree_nuts": [
-    "almond","walnut","cashew","pistachio","hazelnut","pecan","macadamia","brazil nut","nutella","praline","pine nut",
-    "amande","noix","noisette","pistache","noix de cajou","noix de pécan","noix du brésil","pignon",
-    "لوز","جوز","بندق","كاجو","فستق","مكسرات","صنوبر"
+    "almond",
+    "walnut",
+    "cashew",
+    "pistachio",
+    "hazelnut",
+    "pecan",
+    "macadamia",
+    "brazil nut",
+    "nutella",
+    "praline",
+    "pine nut",
+    "amande",
+    "noix",
+    "noisette",
+    "pistache",
+    "noix de cajou",
+    "noix de pécan",
+    "noix du brésil",
+    "pignon",
+    "لوز",
+    "جوز",
+    "بندق",
+    "كاجو",
+    "فستق",
+    "مكسرات",
+    "صنوبر",
+    "almond flour",
+    "walnut pieces",
+    "cashew cream",
+    "pesto"
   ],
   "sesame": [
-    "sesame","tahini","tahina","simsim","benne","sesame oil","sesame seeds",
-    "sésame","huile de sésame",
-    "طحينة","سمسم","زيت السمسم"
+    "sesame",
+    "tahini",
+    "tahina",
+    "simsim",
+    "benne",
+    "sesame oil",
+    "sesame seeds",
+    "sésame",
+    "huile de sésame",
+    "طحينة",
+    "سمسم",
+    "زيت السمسم",
+    "tahini sauce"
   ],
   "fish": [
-    "fish","anchovy","salmon","tuna","cod","tilapia","sardine","fish sauce","mackerel","trout","haddock",
-    "poisson","saumon","thon","morue","anchois","sardine",
-    "سمك","سلمون","تونة","صلصة السمك","سردين","انشوجة"
+    "fish",
+    "anchovy",
+    "salmon",
+    "tuna",
+    "cod",
+    "tilapia",
+    "sardine",
+    "fish sauce",
+    "mackerel",
+    "trout",
+    "haddock",
+    "poisson",
+    "saumon",
+    "thon",
+    "morue",
+    "anchois",
+    "sardine",
+    "سمك",
+    "سلمون",
+    "تونة",
+    "صلصة السمك",
+    "سردين",
+    "انشوجة",
+    "sardines",
+    "anchovies",
+    "fish broth"
   ],
   "shellfish": [
-    "shrimp","prawn","crab","lobster","scampi","shellfish","crustacean",
-    "crevette","crevettes","crabe","homard","crustace",
-    "روبيان","جمبري","سرطان","كركند","قشريات"
+    "shrimp",
+    "prawn",
+    "crab",
+    "lobster",
+    "scampi",
+    "shellfish",
+    "crustacean",
+    "crevette",
+    "crevettes",
+    "crabe",
+    "homard",
+    "crustace",
+    "روبيان",
+    "جمبري",
+    "سرطان",
+    "كركند",
+    "قشريات",
+    "langoustine"
   ],
   "molluscs": [
-    "mussels","oysters","clams","squid","octopus","calamari",
-    "moules","huitres","huîtres","palourdes","calamar","calamars","poulpe",
-    "محار","بلح البحر","حبار","أخطبوط"
+    "mussels",
+    "oysters",
+    "clams",
+    "squid",
+    "octopus",
+    "calamari",
+    "moules",
+    "huitres",
+    "huîtres",
+    "palourdes",
+    "calamar",
+    "calamars",
+    "poulpe",
+    "محار",
+    "بلح البحر",
+    "حبار",
+    "أخطبوط",
+    "scallops"
   ],
   "mustard": [
-    "mustard","dijon","mustard seed","moutarde","graines de moutarde","خردل","بذور الخردل"
+    "mustard",
+    "dijon",
+    "mustard seed",
+    "moutarde",
+    "graines de moutarde",
+    "خردل",
+    "بذور الخردل",
+    "mustard seeds"
   ],
-  "celery": ["celery","celeriac","céleri","celerì","كرفس"],
+  "celery": [
+    "celery",
+    "celeriac",
+    "céleri",
+    "celerì",
+    "كرفس",
+    "celery salt"
+  ],
   "sulfites": [
-    "sulfite","sulphite","wine","vinegar","dried fruit","preservative 220","preservative 221","sodium metabisulfite",
-    "sulfites","sulphites","vin","vinaigre","fruits secs","metabisulfite",
-    "كبريتيت","نبيذ","خل"
+    "sulfite",
+    "sulphite",
+    "wine",
+    "vinegar",
+    "dried fruit",
+    "preservative 220",
+    "preservative 221",
+    "sodium metabisulfite",
+    "sulfites",
+    "sulphites",
+    "vin",
+    "vinaigre",
+    "fruits secs",
+    "metabisulfite",
+    "كبريتيت",
+    "نبيذ",
+    "خل",
+    "wine vinegar"
   ],
-  "lupin": ["lupin","lupine","lupin flour","ترمس","دقيق الترمس"]
+  "lupin": [
+    "lupin",
+    "lupine",
+    "lupin flour",
+    "ترمس",
+    "دقيق الترمس"
+  ],
+  "peanuts": [
+    "peanut",
+    "peanuts",
+    "peanut butter",
+    "groundnut"
+  ],
+  "chickpeas": [
+    "chickpea",
+    "chickpeas",
+    "garbanzo",
+    "garbanzo beans",
+    "hummus"
+  ],
+  "lentils": [
+    "lentil",
+    "lentils"
+  ],
+  "peas": [
+    "pea",
+    "peas",
+    "green pea",
+    "green peas"
+  ],
+  "common beans": [
+    "bean",
+    "beans",
+    "common bean",
+    "common beans",
+    "haricot beans"
+  ],
+  "green beans": [
+    "green bean",
+    "green beans",
+    "string bean",
+    "string beans"
+  ],
+  "tree nuts": [
+    "tree nut",
+    "tree nuts",
+    "mixed nuts",
+    "nuts",
+    "almond",
+    "walnut",
+    "cashew",
+    "pistachio",
+    "hazelnut",
+    "pecan",
+    "brazil nut",
+    "macadamia",
+    "pine nut",
+    "chestnut"
+  ],
+  "almonds": [
+    "almond",
+    "almonds"
+  ],
+  "walnuts": [
+    "walnut",
+    "walnuts"
+  ],
+  "cashews": [
+    "cashew",
+    "cashews"
+  ],
+  "pistachios": [
+    "pistachio",
+    "pistachios"
+  ],
+  "hazelnuts": [
+    "hazelnut",
+    "hazelnuts"
+  ],
+  "pecans": [
+    "pecan",
+    "pecans"
+  ],
+  "brazil nuts": [
+    "brazil nut",
+    "brazil nuts"
+  ],
+  "macadamia nuts": [
+    "macadamia nut",
+    "macadamia nuts"
+  ],
+  "pine nuts": [
+    "pine nut",
+    "pine nuts"
+  ],
+  "chestnuts": [
+    "chestnut",
+    "chestnuts"
+  ],
+  "coconut": [
+    "coconut",
+    "coconuts",
+    "coconut milk",
+    "coconut cream"
+  ],
+  "casein": [
+    "casein"
+  ],
+  "whey": [
+    "whey"
+  ],
+  "butter": [
+    "butter"
+  ],
+  "cheese": [
+    "cheese"
+  ],
+  "yogurt": [
+    "yogurt"
+  ],
+  "cream": [
+    "cream"
+  ],
+  "ghee": [
+    "ghee"
+  ],
+  "eggs": [
+    "egg",
+    "eggs"
+  ],
+  "egg white": [
+    "egg white",
+    "egg whites",
+    "albumen"
+  ],
+  "egg yolk": [
+    "egg yolk",
+    "egg yolks"
+  ],
+  "wheat": [
+    "wheat"
+  ],
+  "barley": [
+    "barley"
+  ],
+  "rye": [
+    "rye"
+  ],
+  "oats": [
+    "oat",
+    "oats",
+    "oatmeal"
+  ],
+  "spelt": [
+    "spelt"
+  ],
+  "kamut": [
+    "kamut"
+  ],
+  "corn": [
+    "corn"
+  ],
+  "rice": [
+    "rice"
+  ],
+  "quinoa": [
+    "quinoa"
+  ],
+  "buckwheat": [
+    "buckwheat"
+  ],
+  "garlic": [
+    "garlic"
+  ],
+  "onion": [
+    "onion"
+  ],
+  "cinnamon": [
+    "cinnamon"
+  ],
+  "coriander": [
+    "coriander"
+  ],
+  "cumin": [
+    "cumin"
+  ],
+  "turmeric": [
+    "turmeric"
+  ],
+  "paprika": [
+    "paprika"
+  ],
+  "black pepper": [
+    "black pepper"
+  ],
+  "ginger": [
+    "ginger"
+  ],
+  "vanilla": [
+    "vanilla"
+  ],
+  "sunflower seeds": [
+    "sunflower seed",
+    "sunflower seeds"
+  ],
+  "poppy seeds": [
+    "poppy seed",
+    "poppy seeds"
+  ],
+  "chia seeds": [
+    "chia",
+    "chia seed",
+    "chia seeds"
+  ],
+  "flaxseed": [
+    "flaxseed"
+  ],
+  "pumpkin seeds": [
+    "pumpkin seed",
+    "pumpkin seeds",
+    "pepitas"
+  ],
+  "salmon": [
+    "salmon"
+  ],
+  "tuna": [
+    "tuna"
+  ],
+  "cod": [
+    "cod"
+  ],
+  "sardines": [
+    "sardines",
+    "sardine"
+  ],
+  "anchovies": [
+    "anchovies",
+    "anchovy"
+  ],
+  "crustaceans": [
+    "crustacean",
+    "crustaceans"
+  ],
+  "mollusks": [
+    "mollusk",
+    "mollusks",
+    "mollusc",
+    "molluscs"
+  ],
+  "shrimp": [
+    "shrimp"
+  ],
+  "crab": [
+    "crab"
+  ],
+  "lobster": [
+    "lobster"
+  ],
+  "scallops": [
+    "scallops",
+    "scallop"
+  ],
+  "oysters": [
+    "oysters",
+    "oyster"
+  ],
+  "clams": [
+    "clams",
+    "clam"
+  ],
+  "mussels": [
+    "mussels",
+    "mussel"
+  ],
+  "squid": [
+    "squid"
+  ],
+  "octopus": [
+    "octopus",
+    "octopu"
+  ],
+  "cocoa": [
+    "cocoa"
+  ],
+  "strawberries": [
+    "strawberries",
+    "strawberry"
+  ],
+  "kiwi": [
+    "kiwi"
+  ],
+  "bananas": [
+    "bananas",
+    "banana"
+  ],
+  "avocado": [
+    "avocado"
+  ],
+  "tomatoes": [
+    "tomatoes",
+    "tomatoe"
+  ],
+  "apples": [
+    "apples",
+    "apple"
+  ],
+  "peaches": [
+    "peaches",
+    "peache"
+  ],
+  "pears": [
+    "pears",
+    "pear"
+  ],
+  "grapes": [
+    "grapes",
+    "grape"
+  ],
+  "cherries": [
+    "cherries",
+    "cherry"
+  ],
+  "mango": [
+    "mango"
+  ],
+  "pineapple": [
+    "pineapple"
+  ],
+  "melon": [
+    "melon"
+  ],
+  "watermelon": [
+    "watermelon"
+  ],
+  "orange": [
+    "orange"
+  ],
+  "lemon": [
+    "lemon"
+  ],
+  "lime": [
+    "lime"
+  ],
+  "grapefruit": [
+    "grapefruit"
+  ],
+  "papaya": [
+    "papaya"
+  ],
+  "pomegranate": [
+    "pomegranate"
+  ],
+  "dates": [
+    "dates",
+    "date"
+  ],
+  "figs": [
+    "figs",
+    "fig"
+  ],
+  "carrots": [
+    "carrots",
+    "carrot"
+  ],
+  "potatoes": [
+    "potatoes",
+    "potatoe"
+  ],
+  "mushrooms": [
+    "mushrooms",
+    "mushroom"
+  ],
+  "yeast": [
+    "yeast"
+  ],
+  "gelatin": [
+    "gelatin"
+  ],
+  "honey": [
+    "honey"
+  ],
+  "saffron": [
+    "saffron"
+  ],
+  "benzoates": [
+    "benzoates",
+    "benzoate"
+  ],
+  "sorbates": [
+    "sorbates",
+    "sorbate"
+  ],
+  "propionates": [
+    "propionates",
+    "propionate"
+  ],
+  "nitrates": [
+    "nitrates",
+    "nitrate"
+  ],
+  "nitrites": [
+    "nitrites",
+    "nitrite"
+  ],
+  "tartrazine": [
+    "tartrazine"
+  ],
+  "annatto": [
+    "annatto"
+  ],
+  "carmine": [
+    "carmine"
+  ],
+  "monosodium glutamate": [
+    "monosodium glutamate",
+    "msg"
+  ],
+  "aspartame": [
+    "aspartame"
+  ],
+  "sucralose": [
+    "sucralose"
+  ],
+  "saccharin": [
+    "saccharin"
+  ],
+  "penicillin": [
+    "penicillin"
+  ],
+  "cephalosporins": [
+    "cephalosporins",
+    "cephalosporin"
+  ],
+  "sulfonamides": [
+    "sulfonamides",
+    "sulfonamide"
+  ],
+  "aspirin": [
+    "aspirin"
+  ],
+  "ibuprofen": [
+    "ibuprofen"
+  ],
+  "naproxen": [
+    "naproxen"
+  ],
+  "latex": [
+    "latex"
+  ],
+  "pollen": [
+    "pollen"
+  ],
+  "dust mites": [
+    "dust mite",
+    "dust mites"
+  ],
+  "mold": [
+    "mold"
+  ],
+  "animal dander": [
+    "animal dander",
+    "pet dander"
+  ],
+  "cockroach": [
+    "cockroach"
+  ],
+  "chamomile": [
+    "chamomile"
+  ],
+  "peppermint": [
+    "peppermint"
+  ],
+  "hibiscus": [
+    "hibiscus",
+    "hibiscu"
+  ],
+  "fenugreek": [
+    "fenugreek"
+  ],
+  "clove": [
+    "clove"
+  ],
+  "cardamom": [
+    "cardamom"
+  ],
+  "anise": [
+    "anise"
+  ],
+  "malt": [
+    "malt"
+  ]
 }

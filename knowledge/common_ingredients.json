@@ -1,53 +1,921 @@
 {
-  "quinoa": ["quinoa"],
-  "tomato": ["tomato","tomatoes","cherry tomatoes","tomate","tomates","sauce tomate","ketchup","طماطم","بندورة"],
-  "cucumber": ["cucumber","concombre","خيار"],
-  "pepper": ["pepper","bell pepper","red pepper","green pepper","poivron","poivre","فلفل","فليفلة"],
-  "onion": ["onion","onions","red onion","oignon","oignons","بصل"],
-  "garlic": ["garlic","ail","ثوم"],
-  "lemon": ["lemon","lemon juice","citron","jus de citron","ليمون"],
-  "lime": ["lime","lime juice","citron vert","عصير لايم","لايم"],
-  "herbs": ["herbs","parsley","cilantro","basil","oregano","thyme","herbes","persil","coriandre","basilic","origan","thym","أعشاب","بقدونس","كزبرة","ريحان","زعتر"],
-  "lentils": ["lentil","lentils","lentille","lentilles","عدس"],
-  "carrot": ["carrot","carrots","carotte","carottes","جزر"],
-  "celery": ["celery","céleri","كرفس"],
-  "broccoli": ["broccoli","brocoli","بروكلي"],
-  "spinach": ["spinach","épinard","epinard","سبانخ"],
-  "sweet_potato": ["sweet potato","sweet potatoes","patate douce","patates douces","بطاطا حلوة"],
-  "potato": ["potato","potatoes","pomme de terre","pommes de terre","بطاطا","بطاطس"],
-  "olive_oil": ["olive oil","huile d'olive","زيت الزيتون"],
-  "butter": ["butter","beurre","زبدة"],
-  "cream": ["cream","creme","crème","كريمة"],
-  "beans": ["beans","black beans","chickpeas","kidney beans","haricots","haricots noirs","pois chiches","haricots rouges","فاصوليا","حمص"],
-  "corn": ["corn","maïs","ذرة"],
-  "rice": ["rice","riz","أرز"],
-  "chia": ["chia","chia seeds","graines de chia","بذور الشيا"],
-  "cocoa": ["cocoa","cocoa powder","cacao","poudre de cacao","كاكاو"],
-  "chocolate": ["chocolate","chocolat","شوكولاتة"],
-  "berries": ["berries","strawberries","blueberries","raspberries","baies","fraises","myrtilles","framboises","توت","فراولة"],
-  "fruit": ["fruit","fruits","seasonal fruits","fruits de saison","فاكهة","فواكه"],
-  "banana": ["banana","banane","موز"],
-  "orange": ["orange","oranges","برتقال"],
-  "apple": ["apple","apples","pomme","pommes","تفاح"],
-  "grapes": ["grapes","raisin","raisins","عنب"],
-  "chicken": ["chicken","chicken breast","poulet","blanc de poulet","دجاج"],
-  "beef": ["beef","boeuf","bœuf","لحم بقري"],
-  "lamb": ["lamb","agneau","لحم غنم","خروف"],
-  "fish": ["fish","salmon","tuna","cod","saumon","thon","سمك","سلمون","تونة"],
-  "shrimp": ["shrimp","prawn","crevette","crevettes","جمبري","روبيان"],
-  "egg": ["egg","eggs","oeuf","œuf","oeufs","بيض"],
-  "milk": ["milk","dairy","lait","حليب"],
-  "cheese": ["cheese","fromage","جبن"],
-  "yogurt": ["yogurt","yaourt","لبن","زبادي"],
-  "avocado": ["avocado","avocat","أفوكادو"],
-  "vinegar": ["vinegar","vinaigrette","vinaigre","خل"],
-  "soy_sauce": ["soy sauce","sauce soja","صلصة الصويا"],
-  "mayo": ["mayo","mayonnaise","aioli","مايونيز"],
-  "sugar": ["sugar","sucre","سكر"],
-  "honey": ["honey","miel","عسل"],
-  "salt": ["salt","sea salt","sel","مَلح","ملح"],
-  "coffee": ["coffee","café","قهوة"],
-  "mint": ["mint","menthe","نعناع"],
-  "nuts": ["nuts","almond","walnut","cashew","pistachio","noisette","amande","noix","مكسرات","لوز","جوز","كاجو","فستق"],
-  "alcohol": ["alcohol","beer","wine","vodka","whiskey","whisky","biere","bière","vin","كحول","بيرة","نبيذ"]
+  "quinoa": [
+    "quinoa"
+  ],
+  "tomato": [
+    "tomato",
+    "tomatoes",
+    "cherry tomatoes",
+    "tomate",
+    "tomates",
+    "sauce tomate",
+    "ketchup",
+    "طماطم",
+    "بندورة"
+  ],
+  "cucumber": [
+    "cucumber",
+    "concombre",
+    "خيار"
+  ],
+  "pepper": [
+    "pepper",
+    "bell pepper",
+    "red pepper",
+    "green pepper",
+    "poivron",
+    "poivre",
+    "فلفل",
+    "فليفلة"
+  ],
+  "onion": [
+    "onion",
+    "onions",
+    "red onion",
+    "oignon",
+    "oignons",
+    "بصل"
+  ],
+  "garlic": [
+    "garlic",
+    "ail",
+    "ثوم"
+  ],
+  "lemon": [
+    "lemon",
+    "lemon juice",
+    "citron",
+    "jus de citron",
+    "ليمون"
+  ],
+  "lime": [
+    "lime",
+    "lime juice",
+    "citron vert",
+    "عصير لايم",
+    "لايم"
+  ],
+  "herbs": [
+    "herbs",
+    "parsley",
+    "cilantro",
+    "basil",
+    "oregano",
+    "thyme",
+    "herbes",
+    "persil",
+    "coriandre",
+    "basilic",
+    "origan",
+    "thym",
+    "أعشاب",
+    "بقدونس",
+    "كزبرة",
+    "ريحان",
+    "زعتر"
+  ],
+  "lentils": [
+    "lentil",
+    "lentils",
+    "lentille",
+    "lentilles",
+    "عدس"
+  ],
+  "carrot": [
+    "carrot",
+    "carrots",
+    "carotte",
+    "carottes",
+    "جزر"
+  ],
+  "celery": [
+    "celery",
+    "céleri",
+    "كرفس"
+  ],
+  "broccoli": [
+    "broccoli",
+    "brocoli",
+    "بروكلي"
+  ],
+  "spinach": [
+    "spinach",
+    "épinard",
+    "epinard",
+    "سبانخ"
+  ],
+  "sweet_potato": [
+    "sweet potato",
+    "sweet potatoes",
+    "patate douce",
+    "patates douces",
+    "بطاطا حلوة"
+  ],
+  "potato": [
+    "potato",
+    "potatoes",
+    "pomme de terre",
+    "pommes de terre",
+    "بطاطا",
+    "بطاطس"
+  ],
+  "olive_oil": [
+    "olive oil",
+    "huile d'olive",
+    "زيت الزيتون"
+  ],
+  "butter": [
+    "butter",
+    "beurre",
+    "زبدة"
+  ],
+  "cream": [
+    "cream",
+    "creme",
+    "crème",
+    "كريمة"
+  ],
+  "beans": [
+    "beans",
+    "black beans",
+    "chickpeas",
+    "kidney beans",
+    "haricots",
+    "haricots noirs",
+    "pois chiches",
+    "haricots rouges",
+    "فاصوليا",
+    "حمص"
+  ],
+  "corn": [
+    "corn",
+    "maïs",
+    "ذرة"
+  ],
+  "rice": [
+    "rice",
+    "riz",
+    "أرز"
+  ],
+  "chia": [
+    "chia",
+    "chia seeds",
+    "graines de chia",
+    "بذور الشيا"
+  ],
+  "cocoa": [
+    "cocoa",
+    "cocoa powder",
+    "cacao",
+    "poudre de cacao",
+    "كاكاو"
+  ],
+  "chocolate": [
+    "chocolate",
+    "chocolat",
+    "شوكولاتة"
+  ],
+  "berries": [
+    "berries",
+    "strawberries",
+    "blueberries",
+    "raspberries",
+    "baies",
+    "fraises",
+    "myrtilles",
+    "framboises",
+    "توت",
+    "فراولة"
+  ],
+  "fruit": [
+    "fruit",
+    "fruits",
+    "seasonal fruits",
+    "fruits de saison",
+    "فاكهة",
+    "فواكه"
+  ],
+  "banana": [
+    "banana",
+    "banane",
+    "موز"
+  ],
+  "orange": [
+    "orange",
+    "oranges",
+    "برتقال"
+  ],
+  "apple": [
+    "apple",
+    "apples",
+    "pomme",
+    "pommes",
+    "تفاح"
+  ],
+  "grapes": [
+    "grapes",
+    "raisin",
+    "raisins",
+    "عنب"
+  ],
+  "chicken": [
+    "chicken",
+    "chicken breast",
+    "poulet",
+    "blanc de poulet",
+    "دجاج"
+  ],
+  "beef": [
+    "beef",
+    "boeuf",
+    "bœuf",
+    "لحم بقري"
+  ],
+  "lamb": [
+    "lamb",
+    "agneau",
+    "لحم غنم",
+    "خروف"
+  ],
+  "fish": [
+    "fish",
+    "salmon",
+    "tuna",
+    "cod",
+    "saumon",
+    "thon",
+    "سمك",
+    "سلمون",
+    "تونة"
+  ],
+  "shrimp": [
+    "shrimp",
+    "prawn",
+    "crevette",
+    "crevettes",
+    "جمبري",
+    "روبيان",
+    "prawns"
+  ],
+  "egg": [
+    "egg",
+    "eggs",
+    "oeuf",
+    "œuf",
+    "oeufs",
+    "بيض"
+  ],
+  "milk": [
+    "milk",
+    "dairy",
+    "lait",
+    "حليب"
+  ],
+  "cheese": [
+    "cheese",
+    "fromage",
+    "جبن"
+  ],
+  "yogurt": [
+    "yogurt",
+    "yaourt",
+    "لبن",
+    "زبادي"
+  ],
+  "avocado": [
+    "avocado",
+    "avocat",
+    "أفوكادو"
+  ],
+  "vinegar": [
+    "vinegar",
+    "vinaigrette",
+    "vinaigre",
+    "خل"
+  ],
+  "soy_sauce": [
+    "soy sauce",
+    "sauce soja",
+    "صلصة الصويا",
+    "soy glaze"
+  ],
+  "mayo": [
+    "mayo",
+    "mayonnaise",
+    "aioli",
+    "مايونيز"
+  ],
+  "sugar": [
+    "sugar",
+    "sucre",
+    "سكر"
+  ],
+  "honey": [
+    "honey",
+    "miel",
+    "عسل"
+  ],
+  "salt": [
+    "salt",
+    "sea salt",
+    "sel",
+    "مَلح",
+    "ملح"
+  ],
+  "coffee": [
+    "coffee",
+    "café",
+    "قهوة"
+  ],
+  "mint": [
+    "mint",
+    "menthe",
+    "نعناع",
+    "?????"
+  ],
+  "nuts": [
+    "nuts",
+    "almond",
+    "walnut",
+    "cashew",
+    "pistachio",
+    "noisette",
+    "amande",
+    "noix",
+    "مكسرات",
+    "لوز",
+    "جوز",
+    "كاجو",
+    "فستق"
+  ],
+  "alcohol": [
+    "alcohol",
+    "beer",
+    "wine",
+    "vodka",
+    "whiskey",
+    "whisky",
+    "biere",
+    "bière",
+    "vin",
+    "كحول",
+    "بيرة",
+    "نبيذ"
+  ],
+  "peanuts": [
+    "peanuts",
+    "peanut"
+  ],
+  "soy": [
+    "soy"
+  ],
+  "lupin": [
+    "lupin"
+  ],
+  "chickpeas": [
+    "chickpeas",
+    "chickpea"
+  ],
+  "peas": [
+    "peas",
+    "pea"
+  ],
+  "common_beans": [
+    "bean",
+    "beans",
+    "common bean",
+    "common beans"
+  ],
+  "green_beans": [
+    "green bean",
+    "green beans",
+    "string bean",
+    "string beans"
+  ],
+  "tree_nuts": [
+    "tree nut",
+    "tree nuts",
+    "mixed nuts",
+    "nuts"
+  ],
+  "almonds": [
+    "almond",
+    "almonds"
+  ],
+  "walnuts": [
+    "walnut",
+    "walnuts"
+  ],
+  "cashews": [
+    "cashew",
+    "cashews"
+  ],
+  "pistachios": [
+    "pistachio",
+    "pistachios"
+  ],
+  "hazelnuts": [
+    "hazelnut",
+    "hazelnuts"
+  ],
+  "pecans": [
+    "pecan",
+    "pecans"
+  ],
+  "brazil_nuts": [
+    "brazil nut",
+    "brazil nuts"
+  ],
+  "macadamia_nuts": [
+    "macadamia nut",
+    "macadamia nuts"
+  ],
+  "pine_nuts": [
+    "pine nut",
+    "pine nuts"
+  ],
+  "chestnuts": [
+    "chestnuts",
+    "chestnut"
+  ],
+  "coconut": [
+    "coconut"
+  ],
+  "casein": [
+    "casein"
+  ],
+  "whey": [
+    "whey"
+  ],
+  "ghee": [
+    "ghee"
+  ],
+  "eggs": [
+    "eggs",
+    "egg"
+  ],
+  "egg_white": [
+    "egg white",
+    "egg whites"
+  ],
+  "egg_yolk": [
+    "egg yolk",
+    "egg yolks"
+  ],
+  "wheat": [
+    "wheat"
+  ],
+  "barley": [
+    "barley"
+  ],
+  "rye": [
+    "rye"
+  ],
+  "oats": [
+    "oats",
+    "oat"
+  ],
+  "spelt": [
+    "spelt"
+  ],
+  "kamut": [
+    "kamut"
+  ],
+  "buckwheat": [
+    "buckwheat"
+  ],
+  "mustard": [
+    "mustard"
+  ],
+  "cinnamon": [
+    "cinnamon"
+  ],
+  "coriander": [
+    "coriander"
+  ],
+  "cumin": [
+    "cumin"
+  ],
+  "turmeric": [
+    "turmeric"
+  ],
+  "paprika": [
+    "paprika"
+  ],
+  "black_pepper": [
+    "black pepper"
+  ],
+  "ginger": [
+    "ginger"
+  ],
+  "vanilla": [
+    "vanilla"
+  ],
+  "sesame": [
+    "sesame"
+  ],
+  "sunflower_seeds": [
+    "sunflower seed",
+    "sunflower seeds"
+  ],
+  "poppy_seeds": [
+    "poppy seed",
+    "poppy seeds"
+  ],
+  "chia_seeds": [
+    "chia seeds",
+    "chia seed"
+  ],
+  "flaxseed": [
+    "flaxseed",
+    "flax seed"
+  ],
+  "pumpkin_seeds": [
+    "pumpkin seed",
+    "pumpkin seeds",
+    "pepitas"
+  ],
+  "salmon": [
+    "salmon"
+  ],
+  "tuna": [
+    "tuna"
+  ],
+  "cod": [
+    "cod"
+  ],
+  "sardines": [
+    "sardines",
+    "sardine"
+  ],
+  "anchovies": [
+    "anchovies",
+    "anchovy"
+  ],
+  "shellfish": [
+    "shellfish"
+  ],
+  "crustaceans": [
+    "crustaceans",
+    "crustacean"
+  ],
+  "mollusks": [
+    "mollusks",
+    "mollusk"
+  ],
+  "crab": [
+    "crab"
+  ],
+  "lobster": [
+    "lobster"
+  ],
+  "scallops": [
+    "scallops",
+    "scallop"
+  ],
+  "oysters": [
+    "oysters",
+    "oyster"
+  ],
+  "clams": [
+    "clams",
+    "clam"
+  ],
+  "mussels": [
+    "mussels",
+    "mussel"
+  ],
+  "squid": [
+    "squid",
+    "calamari"
+  ],
+  "octopus": [
+    "octopus",
+    "octopu"
+  ],
+  "strawberries": [
+    "strawberries",
+    "strawberry"
+  ],
+  "kiwi": [
+    "kiwi"
+  ],
+  "bananas": [
+    "bananas",
+    "banana"
+  ],
+  "tomatoes": [
+    "tomatoes",
+    "tomatoe"
+  ],
+  "apples": [
+    "apples",
+    "apple"
+  ],
+  "peaches": [
+    "peaches",
+    "peache"
+  ],
+  "pears": [
+    "pears",
+    "pear"
+  ],
+  "cherries": [
+    "cherries",
+    "cherry"
+  ],
+  "mango": [
+    "mango"
+  ],
+  "pineapple": [
+    "pineapple"
+  ],
+  "melon": [
+    "melon"
+  ],
+  "watermelon": [
+    "watermelon"
+  ],
+  "grapefruit": [
+    "grapefruit"
+  ],
+  "papaya": [
+    "papaya"
+  ],
+  "pomegranate": [
+    "pomegranate"
+  ],
+  "dates": [
+    "dates",
+    "date"
+  ],
+  "figs": [
+    "figs",
+    "fig"
+  ],
+  "carrots": [
+    "carrots",
+    "carrot"
+  ],
+  "potatoes": [
+    "potatoes",
+    "potatoe"
+  ],
+  "mushrooms": [
+    "mushrooms",
+    "mushroom"
+  ],
+  "yeast": [
+    "yeast"
+  ],
+  "gelatin": [
+    "gelatin"
+  ],
+  "saffron": [
+    "saffron"
+  ],
+  "sulfites": [
+    "sulfites",
+    "sulfite"
+  ],
+  "benzoates": [
+    "benzoates",
+    "benzoate"
+  ],
+  "sorbates": [
+    "sorbates",
+    "sorbate"
+  ],
+  "propionates": [
+    "propionates",
+    "propionate"
+  ],
+  "nitrates": [
+    "nitrates",
+    "nitrate"
+  ],
+  "nitrites": [
+    "nitrites",
+    "nitrite"
+  ],
+  "tartrazine": [
+    "tartrazine"
+  ],
+  "annatto": [
+    "annatto"
+  ],
+  "carmine": [
+    "carmine"
+  ],
+  "monosodium_glutamate": [
+    "monosodium glutamate",
+    "msg"
+  ],
+  "aspartame": [
+    "aspartame"
+  ],
+  "sucralose": [
+    "sucralose"
+  ],
+  "saccharin": [
+    "saccharin"
+  ],
+  "chamomile": [
+    "chamomile"
+  ],
+  "peppermint": [
+    "peppermint"
+  ],
+  "hibiscus": [
+    "hibiscus",
+    "hibiscu"
+  ],
+  "fenugreek": [
+    "fenugreek"
+  ],
+  "clove": [
+    "clove"
+  ],
+  "cardamom": [
+    "cardamom"
+  ],
+  "anise": [
+    "anise"
+  ],
+  "malt": [
+    "malt"
+  ],
+  "labneh": [
+    "labneh",
+    "labneh dip",
+    "????"
+  ],
+  "feta": [
+    "feta",
+    "feta cheese"
+  ],
+  "halloumi": [
+    "halloumi",
+    "halloumi cheese",
+    "????"
+  ],
+  "ricotta": [
+    "ricotta"
+  ],
+  "mozzarella": [
+    "mozzarella"
+  ],
+  "parmesan": [
+    "parmesan"
+  ],
+  "burrata": [
+    "burrata"
+  ],
+  "cream_cheese": [
+    "cream cheese"
+  ],
+  "sour_cream": [
+    "sour cream"
+  ],
+  "bechamel": [
+    "bechamel",
+    "b?chamel"
+  ],
+  "pesto": [
+    "pesto"
+  ],
+  "tahini": [
+    "tahini",
+    "tahini sauce",
+    "?????"
+  ],
+  "aioli": [
+    "aioli"
+  ],
+  "ranch": [
+    "ranch",
+    "ranch dressing"
+  ],
+  "caesar_dressing": [
+    "caesar dressing"
+  ],
+  "vinaigrette": [
+    "vinaigrette"
+  ],
+  "ponzu": [
+    "ponzu"
+  ],
+  "miso": [
+    "miso"
+  ],
+  "tofu": [
+    "tofu"
+  ],
+  "tempeh": [
+    "tempeh"
+  ],
+  "edamame": [
+    "edamame"
+  ],
+  "sesame_oil": [
+    "sesame oil",
+    "huile de s?same",
+    "??? ??????"
+  ],
+  "breadcrumbs": [
+    "breadcrumbs",
+    "bread crumbs"
+  ],
+  "orzo": [
+    "orzo"
+  ],
+  "udon": [
+    "udon"
+  ],
+  "broth": [
+    "broth",
+    "stock",
+    "bouillon",
+    "???"
+  ],
+  "anchovy": [
+    "anchovy",
+    "anchovies"
+  ],
+  "almond": [
+    "almond",
+    "almonds"
+  ],
+  "walnut": [
+    "walnut",
+    "walnuts"
+  ],
+  "cashew": [
+    "cashew",
+    "cashews"
+  ],
+  "pistachio": [
+    "pistachio",
+    "pistachios"
+  ],
+  "hazelnut": [
+    "hazelnut",
+    "hazelnuts"
+  ],
+  "pecan": [
+    "pecan",
+    "pecans"
+  ],
+  "zucchini": [
+    "zucchini",
+    "courgette",
+    "????"
+  ],
+  "eggplant": [
+    "eggplant",
+    "aubergine",
+    "???????"
+  ],
+  "cauliflower": [
+    "cauliflower",
+    "chou-fleur",
+    "??????"
+  ],
+  "cabbage": [
+    "cabbage",
+    "chou",
+    "?????"
+  ],
+  "dill": [
+    "dill",
+    "aneth",
+    "???"
+  ],
+  "sumac": [
+    "sumac",
+    "????"
+  ],
+  "zaatar": [
+    "zaatar",
+    "za?atar",
+    "zaatar spice",
+    "????"
+  ],
+  "molasses": [
+    "molasses",
+    "pomegranate molasses",
+    "??? ??????"
+  ],
+  "chicken_broth": [
+    "chicken broth",
+    "chicken stock"
+  ],
+  "beef_broth": [
+    "beef broth",
+    "beef stock"
+  ],
+  "vegetable_broth": [
+    "vegetable broth",
+    "vegetable stock"
+  ]
 }
