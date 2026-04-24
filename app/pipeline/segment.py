@@ -107,6 +107,7 @@ MEDICAL_PROFILE_TERMS = {
 
 #regex patterns to detect and fix OCR erros related to dish and ingredient 
 OCR_LINE_REPLACEMENTS = [
+    (re.compile(r"^\s*[a-z]ish\s+(?:name|ame)\b[\s:.-]*", re.IGNORECASE), "Dish Name: "),
     (re.compile(r"^\s*dis[h]?\b[\s:.-]*", re.IGNORECASE), "Dish: "),
     (re.compile(r"^\s*ingredien\w*\b[\s:.-]*", re.IGNORECASE), "Ingredients: "),
 ]
@@ -117,7 +118,9 @@ def _clean(s: str) -> str:
     s = s.strip()
     s = LEADING_QUOTE.sub("", s)
     for pattern, replacement in OCR_LINE_REPLACEMENTS:
-        s = pattern.sub(replacement, s)
+        if pattern.search(s):
+            s = pattern.sub(replacement, s)
+            break
     s = re.sub(r"\s+", " ", s)
     return s
 

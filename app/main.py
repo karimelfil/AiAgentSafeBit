@@ -31,8 +31,8 @@ def _normalize_dish_name(name: str) -> str:
     if not name:
         return "Dish"
     cleaned = name.strip()
-    cleaned = re.sub(r"^\s*dis[h]?\s*[:\-]\s*", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"^\s*dish\s*name\s*[:\-]\s*", "", cleaned, flags=re.IGNORECASE).strip()
+    cleaned = re.sub(r"^\s*dis[h]?\s*[:\-]\s*", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"\s*(dish\s*ingredients?|ingredients?)\s*[:\-].*$", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"\s+", " ", cleaned).strip(" -:\t\r\n")
     return cleaned or "Dish"
