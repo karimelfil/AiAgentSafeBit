@@ -73,6 +73,57 @@
       "sesame"
     ]
   },
+  "fattoush": {
+    "keywords": [
+      "fattoush",
+      "fattush"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Fattoush often includes toasted or fried pita bread."
+  },
+  "tabbouleh": {
+    "keywords": [
+      "tabbouleh",
+      "tabouli"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Tabbouleh commonly includes bulgur wheat."
+  },
+  "baba_ghanoush": {
+    "keywords": [
+      "baba ghanoush",
+      "baba ganoush"
+    ],
+    "triggers": [
+      "sesame"
+    ],
+    "note": "Baba ghanoush commonly includes tahini."
+  },
+  "mutabbal": {
+    "keywords": [
+      "mutabbal",
+      "moutabal"
+    ],
+    "triggers": [
+      "sesame"
+    ],
+    "note": "Mutabbal commonly includes tahini."
+  },
+  "kibbeh": {
+    "keywords": [
+      "kibbeh",
+      "kibbe",
+      "kubbeh"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Kibbeh often includes bulgur wheat."
+  },
   "manakish": [
     "wheat_gluten",
     "sesame",
@@ -130,6 +181,16 @@
     "wheat_gluten",
     "egg"
   ],
+  "fried_rice": {
+    "keywords": [
+      "fried rice"
+    ],
+    "triggers": [
+      "egg",
+      "soy"
+    ],
+    "note": "Fried rice often includes egg and soy sauce."
+  },
   "sushi": {
     "keywords": [
       "sushi",
@@ -389,6 +450,29 @@
     ],
     "note": "Alfredo dishes usually include dairy and are often served with pasta."
   },
+  "carbonara": {
+    "keywords": [
+      "carbonara"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "egg",
+      "milk"
+    ],
+    "note": "Carbonara is commonly served with pasta and often includes egg and cheese."
+  },
+  "mac_and_cheese": {
+    "keywords": [
+      "mac and cheese",
+      "mac n cheese",
+      "macaroni cheese"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk"
+    ],
+    "note": "Mac and cheese usually includes pasta and cheese."
+  },
   "pesto": {
     "keywords": [
       "pesto"
@@ -473,6 +557,17 @@
       "sesame"
     ]
   },
+  "samosa": {
+    "keywords": [
+      "samosa",
+      "sambousek",
+      "sambusak"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Samosa and sambousek pastries usually use wheat-based dough."
+  },
   "labneh": {
     "keywords": [
       "labneh",
@@ -481,5 +576,408 @@
     "triggers": [
       "milk"
     ]
+  },
+  "shish_taouk": {
+    "keywords": [
+      "shish taouk",
+      "shish tawook",
+      "tawook"
+    ],
+    "triggers": [
+      "milk"
+    ],
+    "note": "Shish taouk marinades often include yogurt."
+  },
+  "kafta": {
+    "keywords": [
+      "kafta",
+      "kofta",
+      "kafta kebab"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Kafta can be served with pita or include breadcrumbs in the mixture."
+  },
+  "arayes": {
+    "keywords": [
+      "arayes",
+      "arayess"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Arayes are usually stuffed inside pita bread."
+  },
+  "warak_enab": {
+    "keywords": [
+      "warak enab",
+      "waraq enab",
+      "stuffed vine leaves",
+      "stuffed grape leaves"
+    ],
+    "triggers": [],
+    "note": "Warak enab commonly includes rice, herbs, and vine leaves."
+  },
+  "muhammara": {
+    "keywords": [
+      "muhammara",
+      "mhammara"
+    ],
+    "triggers": [
+      "tree_nuts",
+      "wheat_gluten"
+    ],
+    "note": "Muhammara often includes walnuts and breadcrumbs."
+  },
+  "rakakat": {
+    "keywords": [
+      "rakakat",
+      "rakakat jebneh",
+      "cheese rolls"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk"
+    ],
+    "note": "Cheese rolls usually use pastry dough and cheese."
+  },
+  "cheese_manakish": {
+    "keywords": [
+      "cheese manakish",
+      "manakish cheese",
+      "manouche cheese"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk"
+    ],
+    "note": "Cheese manakish uses flatbread dough and cheese."
+  },
+  "zaatar_manakish": {
+    "keywords": [
+      "zaatar manakish",
+      "zaatar manouche",
+      "manakish zaatar"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "sesame"
+    ],
+    "note": "Zaatar manakish uses flatbread dough and sesame-containing zaatar blends."
+  },
+  "sfiha": {
+    "keywords": [
+      "sfiha",
+      "sfeeha",
+      "lahm bi ajeen",
+      "lahm b ajeen"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Sfiha and lahm bi ajeen use wheat-based dough."
+  },
+  "batata_harra": {
+    "keywords": [
+      "batata harra"
+    ],
+    "triggers": [],
+    "note": "Batata harra usually includes potatoes, garlic, coriander, and chili."
+  },
+  "makanek": {
+    "keywords": [
+      "makanek"
+    ],
+    "triggers": [],
+    "note": "Makanek is a sausage dish and may include mixed spices."
+  },
+  "soujouk": {
+    "keywords": [
+      "soujouk",
+      "sujuk",
+      "sucuk"
+    ],
+    "triggers": [],
+    "note": "Soujouk is a spiced sausage dish and may be served with bread."
+  },
+  "foul_medames": {
+    "keywords": [
+      "foul medames",
+      "ful medames",
+      "foul",
+      "ful"
+    ],
+    "triggers": [],
+    "note": "Foul medames commonly includes fava beans, lemon, and olive oil."
+  },
+  "balila": {
+    "keywords": [
+      "balila",
+      "hummus balila"
+    ],
+    "triggers": [],
+    "note": "Balila commonly includes chickpeas, lemon, garlic, and cumin."
+  },
+  "falafel_plate": {
+    "keywords": [
+      "falafel plate",
+      "falafel platter"
+    ],
+    "triggers": [
+      "sesame"
+    ],
+    "note": "Falafel plates are commonly served with tahini."
+  },
+  "mixed_grill": {
+    "keywords": [
+      "mixed grill",
+      "mixed grill platter"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Mixed grill platters are often served with pita bread."
+  },
+  "kibbeh_nayeh": {
+    "keywords": [
+      "kibbeh nayeh",
+      "raw kibbeh"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Kibbeh nayeh includes bulgur and raw meat."
+  },
+  "kunafa_cheese": {
+    "keywords": [
+      "kunafa cheese",
+      "cheese kunafa",
+      "knafeh cheese"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk"
+    ],
+    "note": "Cheese kunafa commonly includes semolina or pastry strands and cheese."
+  },
+  "atayef": {
+    "keywords": [
+      "atayef",
+      "qatayef"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk",
+      "tree_nuts"
+    ],
+    "note": "Atayef often use wheat batter and may be filled with cream or nuts."
+  },
+  "dumplings": {
+    "keywords": [
+      "dumpling",
+      "dumplings",
+      "gyoza",
+      "wonton"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Many dumplings use wheat-based wrappers."
+  },
+  "spring_rolls": {
+    "keywords": [
+      "spring roll",
+      "spring rolls",
+      "egg roll",
+      "egg rolls"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "egg"
+    ],
+    "note": "Spring and egg rolls often use wheat wrappers, and egg rolls may include egg in the wrapper."
+  },
+  "tom_yum": {
+    "keywords": [
+      "tom yum",
+      "tomyum"
+    ],
+    "triggers": [
+      "fish",
+      "shellfish"
+    ],
+    "note": "Tom yum often includes seafood or fish sauce."
+  },
+  "pad_see_ew": {
+    "keywords": [
+      "pad see ew",
+      "pad se ew"
+    ],
+    "triggers": [
+      "soy",
+      "egg"
+    ],
+    "note": "Pad see ew commonly includes soy sauce and egg."
+  },
+  "bibimbap_bowl": {
+    "keywords": [
+      "hot stone bibimbap",
+      "dolsot bibimbap"
+    ],
+    "triggers": [
+      "egg",
+      "soy"
+    ],
+    "note": "Bibimbap variations commonly include egg and seasoned sauces with soy."
+  },
+  "shakshuka": {
+    "keywords": [
+      "shakshuka",
+      "shakshouka"
+    ],
+    "triggers": [
+      "egg"
+    ],
+    "note": "Shakshuka is centered on eggs cooked in tomato sauce."
+  },
+  "moussaka": {
+    "keywords": [
+      "moussaka"
+    ],
+    "triggers": [
+      "milk"
+    ],
+    "note": "Moussaka often includes bechamel or other dairy components."
+  },
+  "borek": {
+    "keywords": [
+      "borek",
+      "burek",
+      "borek cheese"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "milk"
+    ],
+    "note": "Borek commonly uses pastry dough and may include cheese."
+  },
+  "paella": {
+    "keywords": [
+      "paella"
+    ],
+    "triggers": [
+      "shellfish"
+    ],
+    "note": "Seafood paella often includes shrimp, mussels, or other shellfish."
+  },
+  "enchiladas": {
+    "keywords": [
+      "enchilada",
+      "enchiladas"
+    ],
+    "triggers": [
+      "milk"
+    ],
+    "note": "Enchiladas are often topped or filled with cheese."
+  },
+  "queso_dip": {
+    "keywords": [
+      "queso",
+      "queso dip"
+    ],
+    "triggers": [
+      "milk"
+    ],
+    "note": "Queso dips are dairy-based."
+  },
+  "birria": {
+    "keywords": [
+      "birria",
+      "birria tacos"
+    ],
+    "triggers": [
+      "milk",
+      "wheat_gluten"
+    ],
+    "note": "Birria tacos are often served with cheese and may use flour tortillas depending on style."
+  },
+  "injera": {
+    "keywords": [
+      "injera"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Some injera preparations include wheat flour alongside teff."
+  },
+  "jollof_rice": {
+    "keywords": [
+      "jollof rice"
+    ],
+    "triggers": [],
+    "note": "Jollof rice is typically tomato-based rice; allergen risk depends on accompaniments."
+  },
+  "gumbo": {
+    "keywords": [
+      "gumbo"
+    ],
+    "triggers": [
+      "shellfish",
+      "wheat_gluten"
+    ],
+    "note": "Gumbo may include shellfish and a flour-based roux."
+  },
+  "jerk_chicken": {
+    "keywords": [
+      "jerk chicken"
+    ],
+    "triggers": [],
+    "note": "Jerk chicken is spice-heavy; allergen risk usually depends on sides and sauces."
+  },
+  "pierogi": {
+    "keywords": [
+      "pierogi",
+      "pierogies"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "egg",
+      "milk"
+    ],
+    "note": "Pierogi dough commonly uses wheat and egg, and fillings often include cheese."
+  },
+  "schnitzel": {
+    "keywords": [
+      "schnitzel",
+      "chicken schnitzel",
+      "veal schnitzel"
+    ],
+    "triggers": [
+      "wheat_gluten",
+      "egg"
+    ],
+    "note": "Schnitzel is usually breaded with flour or breadcrumbs and egg."
+  },
+  "cevapi": {
+    "keywords": [
+      "cevapi",
+      "cevapcici"
+    ],
+    "triggers": [
+      "wheat_gluten"
+    ],
+    "note": "Cevapi are commonly served with flatbread."
+  },
+  "poke_bowl": {
+    "keywords": [
+      "poke bowl",
+      "poke"
+    ],
+    "triggers": [
+      "fish",
+      "soy"
+    ],
+    "note": "Poke bowls commonly include raw fish and soy-based sauces."
   }
 }

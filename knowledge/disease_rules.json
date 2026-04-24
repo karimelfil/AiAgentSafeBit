@@ -71,13 +71,8 @@
       "pression artérielle",
       "ارتفاع ضغط الدم",
       "ضغط",
-      "heart failure",
-      "hypotension",
-      "edema",
-      "lymphedema",
-      "preeclampsia",
       "gestational hypertension",
-      "pulmonary hypertension"
+      "preeclampsia"
     ],
     "caution_keywords": [
       "salt",
@@ -636,8 +631,7 @@
   "Obesity": {
     "aliases": [
       "obesity",
-      "overweight",
-      "polycystic ovary syndrome"
+      "overweight"
     ],
     "caution_keywords": [
       "fried",

@@ -331,7 +331,7 @@
     "mint",
     "menthe",
     "نعناع",
-    "?????"
+    "fresh mint"
   ],
   "nuts": [
     "nuts",
@@ -748,7 +748,7 @@
   "labneh": [
     "labneh",
     "labneh dip",
-    "????"
+    "strained yogurt"
   ],
   "feta": [
     "feta",
@@ -757,7 +757,7 @@
   "halloumi": [
     "halloumi",
     "halloumi cheese",
-    "????"
+    "grilled halloumi"
   ],
   "ricotta": [
     "ricotta"
@@ -787,7 +787,7 @@
   "tahini": [
     "tahini",
     "tahini sauce",
-    "?????"
+    "sesame paste"
   ],
   "aioli": [
     "aioli"
@@ -820,7 +820,7 @@
   "sesame_oil": [
     "sesame oil",
     "huile de s?same",
-    "??? ??????"
+    "gingelly oil"
   ],
   "breadcrumbs": [
     "breadcrumbs",
@@ -836,7 +836,7 @@
     "broth",
     "stock",
     "bouillon",
-    "???"
+    "stock broth"
   ],
   "anchovy": [
     "anchovy",
@@ -869,42 +869,42 @@
   "zucchini": [
     "zucchini",
     "courgette",
-    "????"
+    "summer squash"
   ],
   "eggplant": [
     "eggplant",
     "aubergine",
-    "???????"
+    "brinjal"
   ],
   "cauliflower": [
     "cauliflower",
     "chou-fleur",
-    "??????"
+    "cauli"
   ],
   "cabbage": [
     "cabbage",
     "chou",
-    "?????"
+    "green cabbage"
   ],
   "dill": [
     "dill",
     "aneth",
-    "???"
+    "fresh dill"
   ],
   "sumac": [
     "sumac",
-    "????"
+    "summaq"
   ],
   "zaatar": [
     "zaatar",
     "za?atar",
     "zaatar spice",
-    "????"
+    "za'atar"
   ],
   "molasses": [
     "molasses",
     "pomegranate molasses",
-    "??? ??????"
+    "dibs rumman"
   ],
   "chicken_broth": [
     "chicken broth",
@@ -917,5 +917,214 @@
   "vegetable_broth": [
     "vegetable broth",
     "vegetable stock"
+  ],
+  "lettuce": [
+    "lettuce",
+    "romaine",
+    "iceberg lettuce"
+  ],
+  "bulgur": [
+    "bulgur",
+    "burghul",
+    "cracked wheat"
+  ],
+  "pita": [
+    "pita",
+    "pita bread",
+    "khubz"
+  ],
+  "flatbread": [
+    "flatbread",
+    "naan",
+    "lavash"
+  ],
+  "toum": [
+    "toum",
+    "garlic sauce",
+    "whipped garlic sauce"
+  ],
+  "fava_beans": [
+    "fava beans",
+    "broad beans",
+    "foul",
+    "ful"
+  ],
+  "vine_leaves": [
+    "vine leaves",
+    "grape leaves",
+    "stuffed vine leaves"
+  ],
+  "vermicelli": [
+    "vermicelli",
+    "rice vermicelli"
+  ],
+  "freekeh": [
+    "freekeh",
+    "farik"
+  ],
+  "phyllo": [
+    "phyllo",
+    "filo pastry",
+    "phyllo pastry"
+  ],
+  "turnip": [
+    "turnip",
+    "pickled turnip"
+  ],
+  "pomegranate_seeds": [
+    "pomegranate seeds",
+    "pomegranate arils"
+  ],
+  "feta_cheese": [
+    "feta cheese",
+    "crumbled feta"
+  ],
+  "akkawi_cheese": [
+    "akkawi",
+    "akkawi cheese",
+    "akawi"
+  ],
+  "nabulsi_cheese": [
+    "nabulsi",
+    "nabulsi cheese",
+    "nabulsiyeh"
+  ],
+  "kafta_spice": [
+    "kafta spice",
+    "seven spice",
+    "baharat"
+  ],
+  "rose_water": [
+    "rose water"
+  ],
+  "orange_blossom_water": [
+    "orange blossom water"
+  ],
+  "semolina": [
+    "semolina",
+    "semolina flour"
+  ],
+  "date_syrup": [
+    "date syrup",
+    "date molasses"
+  ],
+  "chickpea_flour": [
+    "chickpea flour",
+    "gram flour"
+  ],
+  "pita_chips": [
+    "pita chips",
+    "fried pita"
+  ],
+  "paneer": [
+    "paneer"
+  ],
+  "coconut_milk": [
+    "coconut milk",
+    "coconut cream"
+  ],
+  "fish_sauce": [
+    "fish sauce"
+  ],
+  "rice_paper": [
+    "rice paper"
+  ],
+  "nori": [
+    "nori",
+    "seaweed sheet"
+  ],
+  "gochujang": [
+    "gochujang"
+  ],
+  "kimchi": [
+    "kimchi"
+  ],
+  "tortilla": [
+    "tortilla",
+    "flour tortilla",
+    "corn tortilla"
+  ],
+  "parmesan_cheese": [
+    "parmesan cheese",
+    "parmigiano"
+  ],
+  "mozzarella_cheese": [
+    "mozzarella cheese"
+  ],
+  "rice_noodles": [
+    "rice noodles",
+    "rice noodle"
+  ],
+  "udon_noodles": [
+    "udon noodles",
+    "udon noodle"
+  ],
+  "soba_noodles": [
+    "soba noodles",
+    "soba noodle"
+  ],
+  "plantain": [
+    "plantain",
+    "plantains"
+  ],
+  "cassava": [
+    "cassava",
+    "yuca"
+  ],
+  "black_beans": [
+    "black beans",
+    "black bean"
+  ],
+  "chorizo": [
+    "chorizo"
+  ],
+  "curry_paste": [
+    "curry paste",
+    "red curry paste",
+    "green curry paste"
+  ],
+  "prawn_crackers": [
+    "prawn crackers",
+    "shrimp chips"
+  ],
+  "pear": [
+    "pear",
+    "pears"
+  ],
+  "sardine": [
+    "sardine",
+    "sardines"
+  ],
+  "beer": [
+    "beer",
+    "lager",
+    "ale",
+    "stout"
+  ],
+  "sushi": [
+    "sushi",
+    "sashimi"
+  ],
+  "bacon": [
+    "bacon",
+    "smoked bacon"
+  ],
+  "sausage": [
+    "sausage",
+    "sausages"
+  ],
+  "liver": [
+    "liver",
+    "chicken liver",
+    "beef liver"
+  ],
+  "soft cheese": [
+    "soft cheese",
+    "brie",
+    "camembert"
+  ],
+  "unpasteurized milk": [
+    "unpasteurized milk",
+    "raw milk"
   ]
 }

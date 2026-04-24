@@ -15,7 +15,8 @@ POPLER_BIN = os.getenv(
     r"C:\Users\victus\Downloads\Release-25.12.0-0\poppler-25.12.0\Library\bin",
 )
 
-OCR_LANG = "eng+ara+fra"
+# English-only OCR keeps the extraction aligned with the English knowledge base.
+OCR_LANG = "eng"
 
 # OCR configuration oem3 ocr engine and psm6 assume a single uniform block of text
 OCR_CONFIGS = [

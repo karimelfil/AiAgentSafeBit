@@ -75,6 +75,7 @@
   ],
   "wheat_gluten": [
     "wheat",
+    "wheat flour",
     "flour",
     "gluten",
     "bread",
@@ -92,6 +93,9 @@
     "pizza",
     "barley",
     "rye",
+    "durum",
+    "farro",
+    "triticale",
     "semolina",
     "couscous",
     "bulgur",
@@ -126,6 +130,7 @@
   ],
   "soy": [
     "soy",
+    "soybeans",
     "soya",
     "soy sauce",
     "shoyu",
@@ -163,6 +168,8 @@
     "peanut sauce"
   ],
   "tree_nuts": [
+    "tree nut",
+    "tree nuts",
     "almond",
     "walnut",
     "cashew",
@@ -196,8 +203,11 @@
   ],
   "sesame": [
     "sesame",
+    "sesame paste",
     "tahini",
     "tahina",
+    "halva",
+    "halvah",
     "simsim",
     "benne",
     "sesame oil",
@@ -211,6 +221,8 @@
   ],
   "fish": [
     "fish",
+    "bass",
+    "flounder",
     "anchovy",
     "salmon",
     "tuna",
@@ -238,8 +250,10 @@
     "fish broth"
   ],
   "shellfish": [
+    "crustacean shellfish",
     "shrimp",
     "prawn",
+    "crayfish",
     "crab",
     "lobster",
     "scampi",
