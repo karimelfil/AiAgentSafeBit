@@ -4,8 +4,7 @@ import uuid
 import re
 from pathlib import Path
 
-from app.chat_service import answer_chat
-from app.schemas import UserProfile, AnalyzeMenuResponse, ChatRequest, ChatResponse, DishResult
+from app.schemas import UserProfile, AnalyzeMenuResponse, DishResult
 from app.pipeline.knowledge import load_json
 from app.pipeline.ocr import extract_text
 from app.pipeline.segment import segment_dishes
@@ -139,21 +138,3 @@ async def analyze_menu(
         extracted_text_preview=text[:400],
         dishes=results
     )
-
-
-@app.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest):
-    if not request.question.strip():
-        raise HTTPException(status_code=400, detail="Question is required.")
-    if (
-        not request.use_session_memory
-        and not request.session_state
-        and not request.current_dish
-        and not request.scan_history
-        and any(token in request.question.lower() for token in ["this dish", "this restaurant", "that dish", "that restaurant"])
-    ):
-        raise HTTPException(
-            status_code=400,
-            detail="Stateless follow-up requires session_state, current_dish, or scan_history context.",
-        )
-    return await answer_chat(request)
